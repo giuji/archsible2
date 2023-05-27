@@ -1,0 +1,30 @@
+---
+
+- name: install logiops
+  kewlfft.aur.aur:
+    name: logiops
+    state: present
+    use: yay
+    extra_args: removemake
+
+- name: copy config
+  become: yes
+  copy:
+    dest: /etc/logid.cfg
+    src: logid.cfg
+    mode: 0644
+    owner: root
+    group: root
+
+- name: check if logid service is present
+  stat:
+    path: /usr/lib/systemd/system/logid.service
+  register: logid
+
+- name: enable service
+  become: yes
+  systemd: 
+    name: logid.service
+    state: started
+    enabled: true
+  when: logid.stat.exists

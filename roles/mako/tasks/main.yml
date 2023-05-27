@@ -1,0 +1,35 @@
+---
+
+- name: install mako
+  become: yes
+  community.general.pacman:
+    name: mako
+    state: present
+
+- name: template config in
+  block:
+    - file:
+        path: /home/{{ local_username }}/.config/mako
+        state: directory
+        mode: 0755
+    - template:
+        dest: /home/{{ local_username }}/.config/mako/config
+        src: config.j2
+        mode: 0644
+        group: "{{ local_username }}"
+        owner: "{{ local_username }}"
+
+- name: systemd mako unit
+  block:
+    - copy: 
+        dest: /home/{{ local_username }}/.config
+        src: systemd
+        mode: 0644
+        owner: "{{ local_username }}"
+        group: "{{ local_username }}"
+    - systemd:
+        scope: user
+        enabled: true
+        daemon_reload: true
+        name: mako
+        state: restarted

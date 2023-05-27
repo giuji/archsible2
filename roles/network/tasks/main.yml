@@ -1,0 +1,43 @@
+---
+
+- name: generate hostname
+  become: yes
+  hostname:
+    name: "{{ inventory_hostname }}"
+    use: systemd
+
+- name: enable firewall
+  become: yes
+  block:
+    - community.general.pacman:
+        name: firewalld
+        state: present
+    - systemd:
+        name: firewalld
+        enabled: true
+        state: started
+    - shell:
+        cmd: firewall-cmd --set-default-zone=drop
+
+- name: enable some defaults
+  become: yes
+  firewalld:
+    zone: drop
+    state: enabled
+    permanent: true
+    immediate: true
+    service: "{{ item }}"
+  with_items:
+    - dhcpv6-client 
+    - mdns
+    - ssh
+  
+- name: enable soulseek
+  become: yes
+  ansible.posix.firewalld:
+    zone: drop
+    state: enabled
+    immediate: true
+    permanent: true
+    port: 2234-2239/tcp
+  when: inventory_hostname == "m8"

@@ -1,0 +1,30 @@
+---
+
+- name: install desired gtk theme
+  kewlfft.aur.aur:
+    name: "{{ gtk_theme_package }}"
+    state: present
+    use: yay
+    extra_args: removemake
+
+- name: template in gtk config
+  block:
+    - file:
+        path: /home/{{ local_username }}/.config/gtk-3.0
+        state: directory
+        mode: 0755
+    - template:
+        dest: /home/{{ local_username }}/.config/gtk-3.0/settings.ini
+        src: settings.ini.j2
+        mode: 0644
+        owner: "{{ local_username }}"
+        group: "{{ local_username }}"
+
+- name: set theme through dconf
+  block:
+    - community.general.dconf:
+        key: "/org/gnome/desktop/interface/gtk-theme"
+        value: "'{{ gtk_theme_name }}'"
+    - community.general.dconf:
+        key: "/org/gnome/desktop/interface/icon-theme"
+        value: "'{{ gtk_icon_name }}'"

@@ -1,0 +1,7 @@
+[generic]
+localhost ansible_connection=local
+[dark]
+thinky ansible_connection=local ansible_tags=laptop
+m8 ansible_connection=local ansible_tags=laptop
+[catppuccin_macchiato]
+x230 ansible_connection=local ansible_tags=laptop

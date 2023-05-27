@@ -1,0 +1,55 @@
+---
+
+- name: Install apps
+  block:
+    - community.general.pacman:
+        name: 
+          - bitwarden
+          - keepassxc
+          - clementine
+          - syncthing
+          - uwufetch
+          - htop
+        state: present
+      become: yes
+    - kewlfft.aur.aur:
+        name:
+          - spotify
+          - anki-bin
+          - github-desktop-bin 
+        state: present
+
+- name: install thinky apps
+  community.general.flatpak:
+    name:
+      - onlyoffice-bin
+    state: present
+    method: user
+    remote: flathub
+  when: inventory_hostname == "thinky"
+
+- name: install m8 apps
+  block:
+    - name: m8 aur
+      become: yes
+      community.general.flatpak:
+        name:
+          - com.valvesoftware.Steam
+          - org.freedesktop.Platform.VulkanLayer.MangoHud//22.08
+          - protonup-qt-bin 
+          - prismlauncher-bin 
+        state: present
+    - name: m8 pacman 
+      become: yes
+      community.general.pacman:
+        name:
+          - yt-dlp
+          - calibre
+          - nicotine+
+          - qbittorrent
+          - discord
+          - picard
+          - element-desktop
+          - kdenlive
+        state: present
+  when: inventory_hostname == "m8"

@@ -1,0 +1,11 @@
+export MOZ_ENABLE_WAYLAND=1
+export QT_QPA_PLATFORMTHEME=gtk2
+export QT_QPA_PLATFORMTHEME=gtk2
+export GDK_BACKEND=wayland,x11
+export QT_QPA_PLATFORM="wayland;xcb"
+export SDL_VIDEODRIVER=wayland
+export CLUTTER_BACKEND=wayland
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=sway
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1

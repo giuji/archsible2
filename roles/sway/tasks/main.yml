@@ -1,0 +1,93 @@
+---
+
+- name: install required packages
+  block:
+    - community.general.pacman:
+        name: 
+          - sway
+          - upower
+          - pamixer
+          - jq
+          - grim
+          - wl-clipboard
+          - slurp
+          - polkit
+          - seatd
+          - libappindicator-gtk3
+          - xorg-xwayland
+          - noto-fonts
+          - noto-fonts-emoji
+          - noto-fonts-cjk
+          - noto-fonts-extra
+        state: present
+      become: yes
+    - kewlfft.aur.aur:
+        name: 
+          - sway-systemd
+          - wob
+          - qt5-styleplugins
+          - qt6gtk2
+        state: present
+        use: yay
+        extra_args: removemake
+
+- name: copy config
+  block:
+    - file:
+        dest: /home/{{ local_username }}/.config/sway
+        state: directory
+        mode: 0755
+    - template:
+        dest: /home/{{ local_username }}/.config/sway/config
+        src: config.j2
+        mode: 0644
+        owner: "{{ local_username }}"
+        group: "{{ local_username }}"
+    - template:
+        dest: /home/{{ local_username }}/.config/sway/status.sh
+        src: status.sh.j2
+        mode: 0777
+        owner: "{{ local_username }}"
+        group: "{{ local_username }}"
+
+- name: copy zprofile for autostart sway
+  copy:
+    dest: /home/{{ local_username }}
+    src: .zprofile
+    mode: 0644
+    owner: "{{ local_username }}"
+    group: "{{ local_username }}"
+
+- name: copy zshenv for env variables
+  copy:
+    dest: /home/{{ local_username }}
+    src: .zshenv
+    mode: 0644
+    owner: "{{ local_username }}"
+    group: "{{ local_username }}"
+
+- name: copy wob config and override systemd unit
+  block:
+    - file:
+        path: /home/{{ local_username }}/.config/systemd/user/wob.service.d
+        state: directory
+        mode: 0755
+    - template:
+        dest: /home/{{ local_username}}/.config/systemd/user/wob.service.d/override.conf
+        src: override.conf.j2
+        mode: 0644
+        group: "{{ local_username }}"
+        owner: "{{ local_username }}"
+    - template:
+        dest: /home/{{ local_username }}/.config/wob.ini
+        src: wob.ini.j2
+        mode: 0644
+        owner: "{{ local_username }}"
+        group: "{{ local_username }}"
+
+- name: enable systemd unit
+  systemd:
+    scope: user
+    enabled: true
+    name: wob.socket
+    daemon_reload: true

@@ -1,0 +1,52 @@
+---
+
+- name: install udiskie
+  become: yes
+  community.general.pacman:
+    name: 
+      - udiskie
+      - ntfs-3g
+    state: present
+
+- name: systemd udiskie unit
+  block:
+    - copy:
+        dest: /home/{{ local_username }}/.config
+        src: systemd
+        mode: 0644
+        owner: "{{ local_username }}"
+        group: "{{ local_username }}"
+    - systemd:
+        scope: user
+        enabled: true
+        daemon_reload: true
+        name: udiskie
+        state: started
+
+- name: install xdg-user-dirs
+  become: yes
+  community.general.pacman:
+    name: xdg-user-dirs
+    state: present
+
+- name: update user xdg dirs
+  shell:
+    cmd: xdg-user-dirs-update
+
+- name: install file manager
+  become: yes
+  community.general.pacman:
+    name:
+      - thunar
+      - thunar-archive-plugin
+      - thunar-media-tags-plugin
+      - ristretto
+      - tumbler
+      - xarchiver
+      - unzip
+      - unrar
+      - gvfs
+      - gvfs-afc
+      - gvfs-mtp
+      - gvfs-smb
+    state: present

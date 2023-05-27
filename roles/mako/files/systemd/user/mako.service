@@ -1,0 +1,9 @@
+[Unit]
+Description=Mako notification daemon
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/mako
+
+[Install]
+WantedBy=graphical-session.target

@@ -1,0 +1,10 @@
+date_formatted=$(date "+%a %d")
+time_formatted=$(date "+%I:%M")
+
+battery_percentage=$(upower --show-info $(upower --enumerate | grep 'BAT') | grep -E "percentage" | awk '{print $2}')
+
+battery_state=$(upower --show-info $(upower --enumerate | grep 'BAT') | grep -E "state" | awk '{print $2}' | cut -c 1-3)
+
+keyboard_current=$(swaymsg -t get_inputs | jq 'map(select(has("xkb_active_layout_name")))[0].xkb_active_layout_name' | awk -F '(' '{print $2}' | awk -F ')' '{print $1}')
+
+echo -e "$keyboard_current <span color='#{{ alt_foreground_color }}'>-</span> <span color='#{{ alt_foreground_color }}'>$battery_state</span> $battery_percentage <span color='#{{ alt_foreground_color }}'>-</span> $date_formatted <b>$time_formatted</b> "

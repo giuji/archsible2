@@ -1,0 +1,37 @@
+---
+
+- name: install wine
+  community.general.flatpak:
+    name:
+      - org.winehq.Wine
+      - net.lutris.Lutris
+      - com.heroicgameslauncher.hgl
+    state: present
+    method: user
+    remote: flathub
+
+- name: create games folder
+  file:
+    path: /home/{{ username }}/Games
+    state: directory
+    mode: 0755
+
+- name: give wine full home access
+  shell:
+    cmd: flatpak override --user --filesystem=home org.winehq.Wine
+
+- name: local wineprefix setup
+  block:
+    - name: check vn prefix
+      shell:
+        cmd: ls -a /home/{{ username }}/Games | grep 'winevn'
+      register: winevn_exists
+      ignore_errors: true
+    - block:
+        - name: wineboot winevn prefix
+          shell: 
+            cmd: WINEARCH=win32 flatpak run --env="WINEPREFIX=/home/{{ username }}/Games/.winevn" --command=wineboot org.winehq.Wine
+        - name: winetricks stuff
+          shell:
+            cmd: WINEARCH=win32 flatpak run --env="WINEPREFIX=/home/{{ username }}/Games/.winevn" --command=winetricks org.winehq.Wine -q dotnet35 vcrun2005 vcrun2008 vcrun2010 vcrun2012 vcrun2013 vcrun2015 alldlls=default quartz dxvk
+      when: winevn_exists.rc == 1

@@ -1,0 +1,52 @@
+---
+
+- name: gather cpu data
+  become: yes
+  setup:
+    gather_subset: hardware
+
+- name: install hwdec stuff
+  become: yes
+  block:
+    - name: intel
+      community.general.pacman:
+        name: 
+          - libva-intel-driver
+          - intel-gpu-tools
+        state: present
+      when: "'GenuineIntel' in ansible_processor"
+    - name: amd
+      community.general.pacman:
+        name:
+          - radeontop
+          - libva-mesa-driver
+          - mesa-vdpau
+        state: present
+      when: "'AMD' in ansible_processor"
+    - name: ffmpeg
+      community.general.pacman:
+        name:
+          - ffmpeg
+          - libva-utils
+          - vdpauinfo
+        state: present
+
+- name: install mpv
+  become: yes
+  community.general.pacman:
+    name: mpv
+    state: present
+
+- name: create mpv config directory and template in
+  block:
+    - file:
+        path: /home/{{ local_username }}/.config/mpv
+        state: directory
+        mode: 0755
+    - template:
+        dest: /home/{{ local_username }}/.config/mpv/mpv.conf
+        src: mpv.conf.j2
+        mode: 0644
+        group: "{{ local_username }}"
+        owner: "{{ local_username }}"
+

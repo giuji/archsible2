@@ -1,0 +1,26 @@
+#COLORS (ANSI)
+background_color: fdf6e3
+foreground_color: 657b83
+black_color: eee8d5
+red_color: dc322f	
+green_color: 859900
+yellow_color: b58900
+blue_color: 268bd2
+magenta_color: d33682
+cyan_color: 2aa198
+white_color: 073642 
+alt_black_color: 93a1a1
+alt_red_color: dc322f
+alt_green_color: 859900
+alt_yellow_color: b58900
+alt_blue_color: 268bd2
+alt_magenta_color: d33682
+alt_cyan_color: 2aa198
+alt_white_color: 586e75 
+
+alt_foreground_color: a9b4b4
+#vim
+#gtk
+gtk_theme_package: gtk3-theme-numix-solarized
+gtk_theme_name: NumixSolarizedLightCyan
+gtk_icon_name: Papirus-Light

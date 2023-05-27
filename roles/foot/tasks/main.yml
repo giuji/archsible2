@@ -1,0 +1,41 @@
+---
+
+- name: install foot
+  become: yes
+  community.general.pacman:
+    name: foot
+    state: present
+
+- name: override default systemd units
+  copy:
+    dest: /home/{{ local_username }}/.config
+    src: systemd
+    mode: 0644
+    owner: "{{ local_username }}"
+    group: "{{ local_username }}"
+
+- name: template foot config
+  block:
+    - file:
+        path: /home/{{ local_username }}/.config/foot
+        state: directory
+        mode: 0755
+    - template:
+        dest: /home/{{ local_username }}/.config/foot/foot.ini
+        src: foot.ini.j2
+        mode: 0644
+        owner: "{{ local_username }}"
+        group: "{{ local_username }}"
+
+- name: enable systemd unit
+  block:
+    - systemd:
+        scope: user
+        enabled: true
+        name: foot-server@wayland-1.socket
+        daemon_reload: true
+    - systemd:
+        scope: user
+        enabled: true
+        daemon_reload: true
+        name: foot-server@wayland-1.service

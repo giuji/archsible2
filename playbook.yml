@@ -1,0 +1,26 @@
+---
+
+- hosts: all
+  tasks:
+    - name: get the username
+      command: whoami
+      register: result
+      changed_when: false
+    - name: set username as fact
+      set_fact:
+        local_username: "{{ result.stdout }}"
+
+- hosts: all
+  roles:
+    - { role: sway }
+    - { role: nvim }
+    - { role: logiops }
+    - { role: network }
+    - { role: zsh }
+    - { role: foot }
+    - { role: media }
+    - { role: filesystem }
+    - { role: mako }
+    - { role: gtk }
+    - { role: apps }
+    - { role: firefox }
