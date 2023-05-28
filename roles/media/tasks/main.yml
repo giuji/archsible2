@@ -31,6 +31,17 @@
           - vdpauinfo
         state: present
 
+- name: install pipewire
+  become: yes
+  community.general.pacman:
+    name:
+      - pipewire-audio
+      - pipewire-pulse
+      - pipewire-jack
+      - wireplumber
+      - pamixer
+    state: yes
+
 - name: install mpv
   become: yes
   community.general.pacman:

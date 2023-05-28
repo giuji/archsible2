@@ -6,7 +6,6 @@
         name: 
           - sway
           - upower
-          - pamixer
           - jq
           - grim
           - wl-clipboard

@@ -20,22 +20,25 @@
         state: present
 
 - name: install thinky apps
-  community.general.flatpak:
+  kewlfft.aur.aur:
     name:
       - onlyoffice-bin
     state: present
-    method: user
-    remote: flathub
   when: inventory_hostname == "thinky"
 
 - name: install m8 apps
   block:
-    - name: m8 aur
+    - name: enable multilib
       become: yes
-      community.general.flatpak:
+      copy:
+        dest: /etc/pacman.conf
+        src: pacman.conf
+        mode: 0644
+        owner: "root"
+        group: "root"
+    - name: m8 aur
+      kewlfft.aur.aur:
         name:
-          - com.valvesoftware.Steam
-          - org.freedesktop.Platform.VulkanLayer.MangoHud//22.08
           - protonup-qt-bin 
           - prismlauncher-bin 
         state: present
@@ -43,6 +46,7 @@
       become: yes
       community.general.pacman:
         name:
+          - steam
           - yt-dlp
           - calibre
           - nicotine+
