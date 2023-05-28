@@ -15,16 +15,16 @@ your_hostname ansible_connection=local
 
 the playbook requires a working installation of [yay](https://github.com/Jguer/yay) and a user with sudo privileges. 
 
-clone the repo 
-`git clone https://github.com/giuji/archsible2 && cd archsible2` 
-install requirements 
-`ansible-galaxy collection install -r requirements.yml` 
-create an entry for you host under `host_vars/` and populate it with required variables, check already available entries for examples 
-`*your_editor* host_vars/*your_hostname*.yml` 
+clone the repo  
+`git clone https://github.com/giuji/archsible2 && cd archsible2`  
+install requirements  
+`ansible-galaxy collection install -r requirements.yml`  
+create an entry for you host under `host_vars/` and populate it with required variables, check already available entries for examples  
+`*your_editor* host_vars/*your_hostname*.yml`  
 edit the [inventory file](https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html) to add your host 
-`*your text editor* hosts` 
-run the playbook 
-`ansible-playbook -i hosts -l *your hostname* -K -v playbook.yml` 
+`*your text editor* hosts`  
+run the playbook  
+`ansible-playbook -i hosts -l *your hostname* -K -v playbook.yml`  
 
 ---
 
