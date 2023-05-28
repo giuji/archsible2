@@ -1,0 +1,4 @@
+- [ ] Make the playbook locale agnostic
+- [ ] Make wine role work on arch
+- [ ] Add vim themeing 
+- [ ] Implement acpi events and swaylock
