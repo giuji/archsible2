@@ -19,6 +19,12 @@
         mode: 0644
         owner: "{{ local_username }}"
         group: "{{ local_username }}"
+    - template: 
+        dest: /home/{{ local_username }}/.gtkrc-2.0
+        src: gtkrc-2.0.j2
+        mode: 0644
+        owner: "{{ local_username }}"
+        group: "{{ local_username }}"
 
 - name: set theme through dconf
   block:

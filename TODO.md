@@ -2,3 +2,4 @@
 - [ ] Make wine role work on arch
 - [ ] Add vim themeing 
 - [ ] Implement acpi events and swaylock
+- [ ] Add kanshi role for multi monitor support
