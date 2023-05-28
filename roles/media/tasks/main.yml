@@ -40,7 +40,7 @@
       - pipewire-jack
       - wireplumber
       - pamixer
-    state: yes
+    state: present
 
 - name: install mpv
   become: yes
