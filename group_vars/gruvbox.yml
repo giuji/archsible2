@@ -24,3 +24,5 @@ alt_foreground_color: 504945
 gtk_theme_package: gruvbox-dark-gtk
 gtk_theme_name: gruvbox-dark-gtk
 gtk_icon_name: Papirus-Dark
+#qt
+qt_theme_name: gruvbox

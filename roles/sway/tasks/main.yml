@@ -24,8 +24,6 @@
         name: 
           - sway-systemd
           - wob
-          - qt5-styleplugins
-          - qt6gtk2
         state: present
         use: yay
         extra_args: removemake
@@ -61,6 +59,14 @@
   copy:
     dest: /home/{{ local_username }}
     src: .zshenv
+    mode: 0644
+    owner: "{{ local_username }}"
+    group: "{{ local_username }}"
+
+- name: copy electron config
+  copy:
+    dest: /home/{{ local_username }}/.config
+    src: electron-flags.conf
     mode: 0644
     owner: "{{ local_username }}"
     group: "{{ local_username }}"

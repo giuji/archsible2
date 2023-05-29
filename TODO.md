@@ -3,3 +3,5 @@
 - [ ] Add vim themeing 
 - [ ] Implement acpi events and swaylock
 - [ ] Add kanshi role for multi monitor support
+- [ ] switch to qt5ct for qt themes instead of gtk2 to remove xwayland
+- [ ] Create Podman role 

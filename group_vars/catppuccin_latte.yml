@@ -25,3 +25,5 @@ alt_foreground_color: acb0be
 gtk_theme_package: catppuccin-gtk-theme-latte
 gtk_theme_name: Catppuccin-Latte-Standard-Blue-Light
 gtk_icon_name: Papirus-Light
+#qt
+qt_theme_name: catppuccin_latte

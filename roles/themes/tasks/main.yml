@@ -34,3 +34,23 @@
     - community.general.dconf:
         key: "/org/gnome/desktop/interface/icon-theme"
         value: "'{{ gtk_icon_name }}'"
+
+
+- name: copy qt6ct config theme 
+  block:
+    - file:
+        path: /home/{{ local_username }}/.config/qt6ct/colors
+        state: directory
+        mode: 0755
+    - copy:
+        dest: /home/{{ local_username }}/.config/qt6ct/colors/{{ qt_theme_name }}.conf
+        src: "{{ qt_theme_name }}.conf"
+        mode: 0644
+        owner: "{{ local_username }}"
+        group: "{{ local_username }}"
+    - template:
+        dest: /home/{{ local_username }}/.config/qt6ct/qt6ct.conf
+        src: qt6ct.conf.j2
+        mode: 0644
+        owner: "{{ local_username }}"
+        group: "{{ local_username }}"

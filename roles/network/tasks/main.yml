@@ -41,3 +41,24 @@
     permanent: true
     port: 2234-2239/tcp
   when: inventory_hostname == "m8"
+
+- name: install network manager applet
+  become: yes
+  community.general.pacman:
+    name:
+      - network-manager-applet
+    state: present
+
+- name: systemd nm-applet unit
+  block:
+    - copy:
+        dest: /home/{{ local_username }}/.config
+        src: systemd
+        mode: 0644
+        owner: "{{ local_username }}"
+        group: "{{ local_username }}"
+    - systemd:
+        scope: user
+        enabled: true
+        daemon_reload: true
+        name: nm-applet

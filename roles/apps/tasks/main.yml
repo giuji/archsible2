@@ -6,7 +6,6 @@
         name: 
           - bitwarden
           - keepassxc
-          - clementine
           - syncthing
           - uwufetch
           - htop
@@ -14,8 +13,6 @@
       become: yes
     - kewlfft.aur.aur:
         name:
-          - spotify
-          - anki-bin
           - github-desktop-bin 
         state: present
 

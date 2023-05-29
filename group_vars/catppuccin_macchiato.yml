@@ -25,3 +25,5 @@ alt_foreground_color: 6e738d
 gtk_theme_package: catppuccin-gtk-theme-macchiato
 gtk_theme_name: Catppuccin-Macchiato-Standard-Blue-Dark
 gtk_icon_name: Papirus-Dark
+#qt
+qt_theme_name: catppuccin_macchiato

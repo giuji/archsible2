@@ -1,0 +1,9 @@
+[Unit]
+Description=network manager systemtray
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/nm-applet
+
+[Install]
+WantedBy=graphical-session.target
