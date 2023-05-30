@@ -1,6 +1,6 @@
 - [ ] Make the playbook locale agnostic
 - [ ] Make wine role work on arch
-- [ ] Add vim themeing 
+- [x] Add vim themeing 
 - [ ] Implement acpi events and swaylock
 - [ ] Add kanshi role for multi monitor support
 - [x] switch to qt5ct for qt themes instead of gtk2 to remove xwayland

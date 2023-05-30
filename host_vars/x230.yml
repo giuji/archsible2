@@ -1,2 +1,4 @@
-font_name: Gohu GohuFont
-font_package: gohu-font-otb
+font_name: "Gohu GohuFont"
+font_package: "gohu-font-otb"
+display_settings:  "LVDS-1 resolution 1366x768 position 1366,0"
+xwayland_state: "disabled"

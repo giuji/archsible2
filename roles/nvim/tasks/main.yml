@@ -21,10 +21,15 @@
         owner: "{{ local_username }}"
         group: "{{ local_username }}"
 
-- name: copy config
-  copy:
-    dest: /home/{{ local_username }}/.config
-    src: nvim
-    mode: 0644
-    owner: "{{ local_username }}"
-    group: "{{ local_username }}"
+- name: template config in
+  block:
+    - file: 
+        path: /home/{{ local_username }}/.config/nvim
+        state: directory
+        mode: 0755
+    - template:
+        dest: /home/{{ local_username}}/.config/nvim/init.vim
+        src: init.vim.j2
+        mode: 0644
+        owner: "{{ local_username }}"
+        group: "{{ local_username }}"

@@ -13,13 +13,16 @@
           - polkit
           - seatd
           - libappindicator-gtk3
-          - xorg-xwayland
           - noto-fonts
           - noto-fonts-emoji
           - noto-fonts-cjk
           - noto-fonts-extra
         state: present
       become: yes
+    - community.general.pacman:
+        name: xorg-xwayland
+      become: yes
+      when: xwayland_state == "enabled"
     - kewlfft.aur.aur:
         name: 
           - sway-systemd

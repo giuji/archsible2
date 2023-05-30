@@ -20,7 +20,8 @@ alt_white_color: bcc0cc
 
 alt_foreground_color: acb0be
 #vim
-
+vim_theme_plug: "Plug 'catppuccin/nvim', { 'as': 'catppuccin' }"
+vim_theme_name: catppuccin-latte
 #gtk
 gtk_theme_package: catppuccin-gtk-theme-latte
 gtk_theme_name: Catppuccin-Latte-Standard-Blue-Light

@@ -1,8 +1,8 @@
 call plug#begin('~/.local/share/nvim/site/autoload')
 Plug 'Yggdroot/indentLine'
-Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'LnL7/vim-nix'
 Plug 'junegunn/goyo.vim'
+{{ vim_theme_plug }}
 call plug#end()
 
 syntax on
@@ -20,7 +20,7 @@ set noswapfile
 set scrolloff=5
 set wrap
 
-colorscheme catppuccin
+colorscheme {{ vim_theme_name }}
 
 "----------
 "IndentLine
