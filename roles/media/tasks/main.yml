@@ -61,3 +61,25 @@
         group: "{{ local_username }}"
         owner: "{{ local_username }}"
 
+- name: install strawberry
+  become: yes
+  community.general.pacman: 
+    name: strawberry
+    state: present
+
+- name: create strawberry config directory and config in
+  block:
+    - file:
+        path: /home/{{ local_username }}/.config/strawberry
+        state: directory
+        mode: 0755
+    - set_fact:
+        lastfm_state: "disabled"
+      when: lastfm_username == "none"
+    - template:
+        dest: /home/{{ local_username }}/.config/strawberry/strawberry.conf
+        src: strawberry.conf.j2
+        mode: 0644
+        owner: "{{ local_username }}"
+        group: "{{ local_username }}"
+  no_log: true

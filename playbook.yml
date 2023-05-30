@@ -11,6 +11,15 @@
         local_username: "{{ result.stdout }}"
 
 - hosts: all
+  vars_prompt:
+    - name: lastfm_username
+      prompt: "Enter last.fm username (leave blank for none)"
+      private: no
+      default: "none"
+    - name: lastfm_session_key
+      prompt: "Enter last.fm session key (leave blank for none)"
+      default: "none"
+
   roles:
     - { role: sway }
     - { role: nvim }
