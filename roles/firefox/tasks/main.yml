@@ -2,7 +2,7 @@
 
 - name: check if profile is already present
   shell:
-    cmd: ls /home/{{ local_username }}/.mozilla/firefox/ | grep '.*{{ profile_name}}'
+    cmd: ls /home/{{ local_username }}/.mozilla/{{ browser_name }}/ | grep '.*{{ profile_name}}'
   register: profile_exists
   ignore_errors: true
 
@@ -10,16 +10,39 @@
   block:
     - name: create profile
       shell: 
-        cmd: firefox -headless -no-remote -CreateProfile "{{ profile_name }}"
+        cmd: "{{ browser_name }} -headless -no-remote -CreateProfile {{ profile_name }}"
     - name: update profile path
       shell:
-        cmd: ls /home/{{ local_username }}/.mozilla/firefox/ | grep '.*{{ profile_name}}'
+        cmd: ls /home/{{ local_username }}/.mozilla/{{ browser_name }}/ | grep '.*{{ profile_name}}'
       register: profile_update
     - name: copy user.js config in
       copy:
-        dest: /home/{{ local_username }}/.mozilla/firefox/{{ profile_update.stdout }}/user.js
+        dest: /home/{{ local_username }}/.mozilla/{{ browser_name }}/{{ profile_update.stdout }}/user.js
         src: user.js
         mode: 0644
         owner: "{{ local_username }}"
         group: "{{ local_username }}"
   when: profile_exists.rc == 1
+
+# OK I GOTTA FIGURE OUT A BETTER WAY TO DO THIS CAUSE IT'S SO UGLY LIKE THIS...
+- name: do the check again.. 
+  shell:
+    cmd: ls /home/{{ local_username }}/.mozilla/{{ browser_name }}/ | grep '.*{{ profile_name }}'
+  register: profile_dir
+
+- name: install extensions
+  block:
+    - name: create extensions folder
+      file:
+        path: /home/{{ local_username }}/.mozilla/{{ browser_name }}/{{ profile_dir.stdout }}/extensions
+        state: directory
+        mode: 0755
+    - name: ublock origin
+      get_url:
+        url: https://addons.mozilla.org/firefox/downloads/file/4103048/ublock_origin-1.49.2.xpi
+        dest: /home/{{ local_username }}/.mozilla/{{ browser_name }}/{{ profile_dir.stdout }}/extensions/uBlock0@raymondhill.net.xpi
+    - name: containers
+      get_url:
+        url: https://addons.mozilla.org/firefox/downloads/file/4058426/multi_account_containers-8.1.2.xpi
+        dest: /home/{{ local_username }}/.mozilla/{{ browser_name }}/{{ profile_dir.stdout }}/extensions/@testpilot-containers.xpi
+  when: profile_dir.rc == 0
