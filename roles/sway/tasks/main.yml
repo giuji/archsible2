@@ -6,9 +6,11 @@
         name: 
           - sway
           - upower
+          - swaybg
           - jq
           - grim
           - wl-clipboard
+          - bemenu-wayland
           - slurp
           - polkit
           - seatd
@@ -17,6 +19,10 @@
           - noto-fonts-emoji
           - noto-fonts-cjk
           - noto-fonts-extra
+          - qt6-wayland
+          - qt5-wayland
+          - brightnessctl
+          - xdg-desktop-portal-wlr
         state: present
       become: yes
     - community.general.pacman:

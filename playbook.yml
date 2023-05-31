@@ -21,15 +21,15 @@
       default: "none"
 
   roles:
+    - { role: media }
     - { role: sway }
     - { role: nvim }
     - { role: logiops }
     - { role: network }
     - { role: zsh }
     - { role: foot }
-    - { role: media }
     - { role: filesystem }
     - { role: mako }
     - { role: themes }
     - { role: apps }
-    - { role: firefox }
+      #- { role: firefox }

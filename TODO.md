@@ -5,3 +5,4 @@
 - [ ] Add kanshi role for multi monitor support
 - [x] switch to qt5ct for qt themes instead of gtk2 to remove xwayland
 - [ ] Create Podman role 
+- [ ] fix pipewire jack dependency conflict

@@ -2,7 +2,9 @@
 
 - name: install desired gtk theme
   kewlfft.aur.aur:
-    name: "{{ gtk_theme_package }}"
+    name: 
+      - "{{ gtk_theme_package }}"
+      - papirus-icon-theme
     state: present
     use: yay
     extra_args: removemake
