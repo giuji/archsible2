@@ -31,5 +31,6 @@
     - { role: filesystem }
     - { role: mako }
     - { role: themes }
+    - { role: keepassxc }
     - { role: apps }
     - { role: firefox }

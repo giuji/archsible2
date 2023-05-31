@@ -1,0 +1,30 @@
+---
+
+- name: install keepassxc
+  become: yes
+  community.general.pacman:
+    name: keepassxc
+    state: present
+
+- name: config keepassxc
+  block:
+    - file:
+        path: /home/{{ local_username }}/.config/keepassxc/keepassxc.ini
+        state: touch
+        mode: 0644
+    - blockinfile:
+        path: /home/{{ local_username }}/.config/keepassxc/keepassxc.ini
+        block: |
+          [FdoSecrets]
+          Enabled=true
+          
+          [GUI]
+          ApplicationTheme=classic
+          CompactMode=true
+          MinimizeOnClose=true
+          MinimizeOnStartup=true
+          MinimizeToTray=true
+          ShowTrayIcon=true
+          TrayIconAppearance=colorful
+
+

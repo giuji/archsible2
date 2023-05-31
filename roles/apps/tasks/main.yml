@@ -5,7 +5,6 @@
     - community.general.pacman:
         name: 
           - bitwarden
-          - keepassxc
           - syncthing
           - uwufetch
           - htop
