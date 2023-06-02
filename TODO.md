@@ -1,4 +1,4 @@
-- [ ] Make the playbook locale agnostic
+- [x] Make the playbook locale agnostic
 - [ ] Make wine role work on arch
 - [x] Add vim themeing 
 - [ ] Implement acpi events and swaylock
@@ -6,3 +6,4 @@
 - [x] switch to qt5ct for qt themes instead of gtk2 to remove xwayland
 - [ ] Create Podman role 
 - [ ] fix pipewire jack dependency conflict
+- [ ] add syncthing role

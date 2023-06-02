@@ -21,7 +21,6 @@
       default: "none"
 
   roles:
-    - { role: media }
     - { role: sway }
     - { role: nvim }
     - { role: logiops }
@@ -29,6 +28,7 @@
     - { role: zsh }
     - { role: foot }
     - { role: filesystem }
+    - { role: media }
     - { role: mako }
     - { role: themes }
     - { role: keepassxc }

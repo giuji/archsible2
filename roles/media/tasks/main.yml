@@ -5,6 +5,15 @@
   setup:
     gather_subset: hardware
 
+- name: register xdg dirs
+  block:
+    - shell:
+        cmd: xdg-user-dir MUSIC
+      register: XDG_MUSIC
+    - shell:
+        cmd: xdg-user-dir PICTURES
+      register: XDG_PICTURES
+
 - name: install hwdec stuff
   become: yes
   block:
@@ -60,6 +69,11 @@
         mode: 0644
         group: "{{ local_username }}"
         owner: "{{ local_username }}"
+    - file:
+        path: "{{ XDG_PICTURES.stdout }}/mpv-shots"
+        state: directory
+        mode: 0755
+
 
 - name: install strawberry
   become: yes
