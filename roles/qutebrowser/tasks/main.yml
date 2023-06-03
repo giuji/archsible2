@@ -1,0 +1,21 @@
+---
+
+- name: install qutebrowser
+  kewlfft.aur.aur:
+    name: qutebrowser-qt6-git
+    state: present
+    use: yay
+    extra_args: removemake
+
+- name: template in config okk
+  block:
+    - file:
+        path: /home/{{ local_username }}/.config/qutebrowser
+        state: directory
+        mode: 0755
+    - template:
+        dest: /home/{{ local_username }}/.config/qutebrowser/config.py
+        src: config.py.j2
+        mode: 0644
+        owner: "{{ local_username }}"
+        group: "{{ local_username }}"

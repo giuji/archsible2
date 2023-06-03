@@ -5,7 +5,6 @@
     - community.general.pacman:
         name: 
           - bitwarden
-          - syncthing
           - uwufetch
           - htop
         state: present
@@ -14,42 +13,3 @@
         name:
           - github-desktop-bin 
         state: present
-
-- name: install thinky apps
-  kewlfft.aur.aur:
-    name:
-      - onlyoffice-bin
-    state: present
-  when: inventory_hostname == "thinky"
-
-- name: install m8 apps
-  block:
-    - name: enable multilib
-      become: yes
-      copy:
-        dest: /etc/pacman.conf
-        src: pacman.conf
-        mode: 0644
-        owner: "root"
-        group: "root"
-    - name: m8 aur
-      kewlfft.aur.aur:
-        name:
-          - protonup-qt-bin 
-          - prismlauncher-bin 
-        state: present
-    - name: m8 pacman 
-      become: yes
-      community.general.pacman:
-        name:
-          - steam
-          - yt-dlp
-          - calibre
-          - nicotine+
-          - qbittorrent
-          - discord
-          - picard
-          - element-desktop
-          - kdenlive
-        state: present
-  when: inventory_hostname == "m8"
