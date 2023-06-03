@@ -13,7 +13,7 @@ your_hostname ansible_connection=local
 ## usage 
 **the playbook is intended for my personal use only**
 
-the playbook requires a working installation of [yay](https://github.com/Jguer/yay) and a user with sudo privileges. 
+the playbook requires a working installation of [yay](https://github.com/Jguer/yay) and a user with sudo privileges.
 
 clone the repo  
 `git clone https://github.com/giuji/archsible2 && cd archsible2`  

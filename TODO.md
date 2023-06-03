@@ -1,5 +1,5 @@
 - [x] Make the playbook locale agnostic
-- [ ] Make wine role work on arch
+- [x] Make wine role work on arch
 - [x] Add vim themeing 
 - [ ] Implement acpi events and swaylock
 - [ ] Add kanshi role for multi monitor support

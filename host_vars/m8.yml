@@ -1,0 +1,5 @@
+font_name: "Iosevka"
+font_package: "ttc-iosevka"
+display_settings: "eDP-1 resolution 2160x1440 position 2160,0 scale 1.25"
+xwayland_state: "enabled"
+browser_name: icecat

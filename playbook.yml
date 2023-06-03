@@ -28,7 +28,7 @@
     - { role: zsh }
     - { role: foot }
     - { role: filesystem }
-    #- { role: media }
+    - { role: media }
     - { role: mako }
     - { role: themes }
     - { role: keepassxc }
@@ -36,3 +36,4 @@
     #- { role: firefox }
     - { role: qutebrowser }
     - { role: zathura }
+    - { role: gaming }
