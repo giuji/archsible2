@@ -38,6 +38,12 @@
         value: "'{{ gtk_icon_name }}'"
 
 
+- name: install qt6ct
+  become: yes
+  community.general.pacman:
+    name: qt6ct
+    state: present
+
 - name: copy qt6ct config theme 
   block:
     - file:

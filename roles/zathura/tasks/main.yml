@@ -1,0 +1,25 @@
+---
+
+- name: install zathura
+  become: yes
+  community.general.pacman:
+    name:
+      - zathura
+      - zathura-cb
+      - zathura-pdf-mupdf
+    state: present
+
+- name: template zathura config in 
+  block:
+    - copy:
+        dest: /home/{{ local_username }}/.config
+        src: zathura
+        mode: 0644
+        owner: "{{ local_username }}"
+        group: "{{ local_username }}"
+    - template:
+        dest: /home/{{ local_username }}/.config/zathura/colors
+        src: colors.j2
+        mode: 0644
+        group: "{{ local_username }}"
+        owner: "{{ local_username }}"
