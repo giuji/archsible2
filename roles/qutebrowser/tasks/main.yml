@@ -2,7 +2,9 @@
 
 - name: install qutebrowser
   kewlfft.aur.aur:
-    name: qutebrowser-qt6-git
+    name: 
+      - qutebrowser-qt6-git
+      - python-adblock
     state: present
     use: yay
     extra_args: removemake

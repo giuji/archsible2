@@ -7,5 +7,5 @@
 - [ ] Create Podman role 
 - [ ] fix pipewire jack dependency conflict
 - [ ] add syncthing role
-- [ ] add qutebrowser
-- [ ] add zathura role 
+- [x] add qutebrowser
+- [x] add zathura role 
