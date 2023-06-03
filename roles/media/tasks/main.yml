@@ -54,7 +54,9 @@
 - name: install mpv
   become: yes
   community.general.pacman:
-    name: mpv
+    name:
+      - mpv
+      - yt-dlp
     state: present
 
 - name: create mpv config directory and template in

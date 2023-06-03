@@ -229,10 +229,11 @@ bar {
     background #{{ background_color }}
 	height 35
     inactive_workspace #{{ background_color }} #{{ background_color }} #{{ alt_foreground_color }}
+    active_workspace #{{ background_color }} #{{ background_color }} #{{ alt_foreground_color }}
 	focused_workspace #{{ background_color }} #{{ background_color }} #{{ green_color }}
     }
     tray_padding 7
-    icon_theme Papirus-Light
+    icon_theme {{ gtk_icon_name }}
     tray_bindcode 272 Activate
     tray_bindcode 274 SecondaryActivate
     tray_bindcode 273 ContextMenu

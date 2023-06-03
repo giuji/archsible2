@@ -9,6 +9,10 @@
 - name: config keepassxc
   block:
     - file:
+        path: /home/{{ local_username }}/.config/keepassxc
+        state: directory
+        mode: 0755
+    - file:
         path: /home/{{ local_username }}/.config/keepassxc/keepassxc.ini
         state: touch
         mode: 0644
