@@ -1,22 +1,22 @@
 #COLORS (ANSI)
 background_color: eff1f5
 foreground_color: 4c4f69
-black_color: 5c5f77
+black_color: bcc0cc
 red_color: d20f39	
 green_color: 40a02b
 yellow_color: df8e1d
 blue_color: 1e66f5
 magenta_color: ea76cb
 cyan_color: 179299
-white_color: acb0be	
-alt_black_color: 6c6f85
+white_color: 5c5f77	
+alt_black_color: acb0be
 alt_red_color: d20f39
 alt_green_color: 40a02b
 alt_yellow_color: df8e1d
 alt_blue_color: 1e66f5
 alt_magenta_color: ea76cb
 alt_cyan_color: 179299
-alt_white_color: bcc0cc
+alt_white_color: 6c6f85
 
 alt_foreground_color: acb0be
 #vim
