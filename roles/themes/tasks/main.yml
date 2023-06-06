@@ -36,7 +36,9 @@
     - community.general.dconf:
         key: "/org/gnome/desktop/interface/icon-theme"
         value: "'{{ gtk_icon_name }}'"
-
+    - community.general.dconf:
+        key: "/org/gnome/desktop/interface/cursor-theme"
+        value: "'Adwaita'"
 
 - name: install qt6ct
   become: yes
