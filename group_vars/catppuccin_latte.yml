@@ -22,6 +22,7 @@ alt_foreground_color: acb0be
 #vim
 vim_theme_plug: "Plug 'catppuccin/nvim', { 'as': 'catppuccin' }"
 vim_theme_name: catppuccin-latte
+vim_theme_background: light
 #gtk
 gtk_theme_package: catppuccin-gtk-theme-latte
 gtk_theme_name: Catppuccin-Latte-Standard-Blue-Light

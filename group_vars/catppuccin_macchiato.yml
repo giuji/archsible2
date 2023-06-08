@@ -22,6 +22,7 @@ alt_foreground_color: 6e738d
 #vim
 vim_theme_plug: "Plug 'catppuccin/nvim', { 'as': 'catppuccin' }"
 vim_theme_name: catppuccin-macchiato
+vim_theme_background: dark
 #gtk
 gtk_theme_package: catppuccin-gtk-theme-macchiato
 gtk_theme_name: Catppuccin-Macchiato-Standard-Blue-Dark

@@ -1,0 +1,31 @@
+#COLORS (ANSI)
+background_color: fbf1c7
+foreground_color: 3c3836
+black_color: ebdbb2
+red_color: cc241d	
+green_color: 98971a
+yellow_color: d79921
+blue_color: 458588
+magenta_color: b16286
+cyan_color: 689d6a
+white_color: 504945	
+alt_black_color: d5c4a1
+alt_red_color: 9d0006
+alt_green_color: 79740e
+alt_yellow_color: b57614
+alt_blue_color: 076678
+alt_magenta_color: 8f3f71
+alt_cyan_color: 427b58
+alt_white_color: 665c54
+
+alt_foreground_color: a89984
+#vim
+vim_theme_plug: "Plug 'morhetz/gruvbox'"
+vim_theme_name: gruvbox light
+vim_theme_background: light
+#gtk
+gtk_theme_package: gruvbox-dark-gtk
+gtk_theme_name: gruvbox-dark-gtk
+gtk_icon_name: Papirus-Light
+#qt
+qt_theme_name: gruvbox_light

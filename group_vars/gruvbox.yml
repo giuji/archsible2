@@ -22,6 +22,7 @@ alt_foreground_color: 504945
 #vim
 vim_theme_plug: "Plug 'morhetz/gruvbox'"
 vim_theme_name: gruvbox
+vim_theme_background: dark
 #gtk
 gtk_theme_package: gruvbox-dark-gtk
 gtk_theme_name: gruvbox-dark-gtk
