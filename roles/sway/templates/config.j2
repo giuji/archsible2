@@ -28,6 +28,8 @@ output {{ display_settings }}
 
 xwayland {{ xwayland_state }}
 
+mouse_warping container
+
 # make it pretty <3
 gaps outer 5
 default_border pixel 1
@@ -35,6 +37,7 @@ default_floating_border pixel 1
 client.focused #{{ foreground_color }} #{{ foreground_color }} #{{ foreground_color }} #{{ foreground_color }}
 client.unfocused #{{ background_color }} #{{ background_color }} #{{ background_color }} #{{ background_color }}
 client.focused_inactive #{{ background_color }} #{{ background_color }} #{{ background_color }} #{{ background_color }}
+client.urgent #{{ red_color }} #{{ red_color }} #{{ red_color }} #{{ red_color }}
 font pango:{{ font_name }} 14px
 
 ### Idle configuration
@@ -231,6 +234,7 @@ bar {
     inactive_workspace #{{ background_color }} #{{ background_color }} #{{ alt_foreground_color }}
     active_workspace #{{ background_color }} #{{ background_color }} #{{ alt_foreground_color }}
 	focused_workspace #{{ background_color }} #{{ background_color }} #{{ green_color }}
+    urgent_workspace #{{ background_color }} #{{ background_color }} #{{ red_color }}
     }
     tray_padding 7
     icon_theme {{ gtk_icon_name }}
