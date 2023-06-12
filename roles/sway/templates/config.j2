@@ -18,7 +18,7 @@ set $term footclient
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu  bemenu-run -p "run" -i -H 35 --fn "{{ font_name }}" --tb "#{{ background_color }}" --tf "#{{ foreground_color }}" --fb "#{{ background_color }}" --ff "#{{ foreground_color }}" --cf "#{{ background_color }}" --nb "#{{ background_color }}" --nf "#{{ alt_foreground_color }}" --hb "#{{ background_color }}" --hf "#{{ foreground_color }}" --af "#{{ alt_foreground_color }}" --ab "#{{ background_color }}"
+set $menu  bemenu-run -b -p "run" -i  -H 38 --fn "{{ font_name }}" --tb "#{{ background_color }}" --tf "#{{ foreground_color }}" --fb "#{{ background_color }}" --ff "#{{ foreground_color }}" --cf "#{{ background_color }}" --nb "#{{ background_color }}" --nf "#{{ alt_foreground_color }}" --hb "#{{ background_color }}" --hf "#{{ foreground_color }}" --af "#{{ alt_foreground_color }}" --ab "#{{ background_color }}"
 
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
@@ -30,8 +30,10 @@ xwayland {{ xwayland_state }}
 
 mouse_warping container
 
+exec /usr/share/sway/scripts/inactive-windows-transparency.py --opacity 0.85
+
 # make it pretty <3
-gaps outer 5
+gaps inner 5
 default_border pixel 1
 default_floating_border pixel 1
 client.focused #{{ foreground_color }} #{{ foreground_color }} #{{ foreground_color }} #{{ foreground_color }}
@@ -219,7 +221,7 @@ bindsym $mod+Shift+s exec grim -g "$(slurp)" /home/{{ local_username }}/Immagini
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position top
+    position bottom
     
     pango_markup enabled
 
@@ -230,13 +232,13 @@ bar {
     colors {
     statusline #{{ foreground_color }}
     background #{{ background_color }}
-	height 35
+	height 38
     inactive_workspace #{{ background_color }} #{{ background_color }} #{{ alt_foreground_color }}
     active_workspace #{{ background_color }} #{{ background_color }} #{{ alt_foreground_color }}
 	focused_workspace #{{ background_color }} #{{ background_color }} #{{ green_color }}
     urgent_workspace #{{ background_color }} #{{ background_color }} #{{ red_color }}
     }
-    tray_padding 7
+    tray_padding 5
     icon_theme {{ gtk_icon_name }}
     tray_bindcode 272 Activate
     tray_bindcode 274 SecondaryActivate
