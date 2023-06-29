@@ -15,9 +15,8 @@ compinit
 _comp_options+=(globdots)
 
 #Aliases
-alias pamcan="pacman"
+alias sway="dbus-session-run"
 alias vim="nvim"
-alias autoremove="sudo pacman -R $(pacman -Qdtq)"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh

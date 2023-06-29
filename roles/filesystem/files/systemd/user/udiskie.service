@@ -1,9 +1,0 @@
-[Unit]
-Description=Manage usb automount
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/udiskie -T
-
-[Install]
-WantedBy=graphical-session.target

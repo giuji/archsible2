@@ -2,7 +2,7 @@
 
 - name: install zathura
   become: yes
-  community.general.pacman:
+  community.general.xbps:
     name:
       - zathura
       - zathura-cb

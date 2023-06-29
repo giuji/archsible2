@@ -40,20 +40,9 @@
           - vdpauinfo
         state: present
 
-- name: install pipewire
-  become: yes
-  community.general.pacman:
-    name:
-      - pipewire-audio
-      - pipewire-pulse
-      - pipewire-jack
-      - wireplumber
-      - pamixer
-    state: present
-
 - name: install mpv
   become: yes
-  community.general.pacman:
+  community.general.xbps:
     name:
       - mpv
       - yt-dlp
@@ -75,7 +64,6 @@
         path: "{{ XDG_PICTURES.stdout }}/mpv-shots"
         state: directory
         mode: 0755
-
 
 - name: install strawberry
   become: yes

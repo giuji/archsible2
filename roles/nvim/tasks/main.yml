@@ -2,7 +2,7 @@
 
 - name: install neovim
   become: yes
-  community.general.pacman:
+  community.general.xbps:
     name: neovim
     state: present
 

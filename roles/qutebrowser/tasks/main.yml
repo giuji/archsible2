@@ -1,13 +1,11 @@
 ---
 
 - name: install qutebrowser
-  kewlfft.aur.aur:
+  community.general.xbps:
     name: 
-      - qutebrowser-qt6-git
-      - python-adblock
+      - qutebrowser
+      - python3-adblock
     state: present
-    use: yay
-    extra_args: removemake
 
 - name: template in config okk
   block:

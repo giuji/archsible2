@@ -1,0 +1,16 @@
+---
+
+- name: install pulseaudio
+  become: yes
+  community.general.xbps:
+    name: 
+      - pulseaudio
+      - alsa-utils
+      - pamixer
+
+- name: add user to audio group
+  become: yes
+  user:
+    name: "{{ local_username }}"
+    append: true
+    groups: audio

@@ -2,7 +2,7 @@
 
 - name: install required packages
   block:
-    - community.general.pacman:
+    - community.general.xbps:
         name: 
           - sway
           - upower
@@ -12,9 +12,7 @@
           - wl-clipboard
           - bemenu-wayland
           - slurp
-          - polkit
           - seatd
-          - libappindicator-gtk3
           - noto-fonts
           - noto-fonts-emoji
           - noto-fonts-cjk
@@ -22,20 +20,56 @@
           - qt6-wayland
           - qt5-wayland
           - brightnessctl
-          - xdg-desktop-portal-wlr
+          - wob
+          - dbus
         state: present
       become: yes
-    - community.general.pacman:
-        name: xorg-xwayland
+    - community.general.xbps:
+        name: xorg-server-xwayland
       become: yes
       when: xwayland_state == "enabled"
-    - kewlfft.aur.aur:
-        name: 
-          - sway-systemd
-          - wob
-        state: present
-        use: yay
-        extra_args: removemake
+
+- name: copy zprofile for XDG_RUNTIME_DIR
+  copy:
+    dest: /home/{{ local_username }}
+    src: .zprofile
+    mode: 0644
+    owner: "{{ local_username }}"
+    group: "{{ local_username }}"
+
+- name: copy zshenv for env variables
+  copy:
+    dest: /home/{{ local_username }}
+    src: .zshenv
+    mode: 0644
+    owner: "{{ local_username }}"
+    group: "{{ local_username }}"
+
+- name: seatd configuration
+  become: yes
+  block:
+     - user:
+        name: "{{ local_username }}"
+        append: true
+        groups: _seatd,video
+    - file:
+        src: /etc/sv/seatd
+        path: /var/service/seatd
+        state: link
+    - community.general.runit:
+        name: seatd
+        state: started
+
+- name: enable dbus
+  become: yes
+  block:
+    - file:
+        src: /etc/sv/dbus
+        path: /var/service/dbus
+        state: link
+    - community.general.runit:
+        name: dbus
+        state: started
 
 - name: copy config
   block:
@@ -56,22 +90,6 @@
         owner: "{{ local_username }}"
         group: "{{ local_username }}"
 
-- name: copy zprofile for autostart sway
-  copy:
-    dest: /home/{{ local_username }}
-    src: .zprofile
-    mode: 0644
-    owner: "{{ local_username }}"
-    group: "{{ local_username }}"
-
-- name: copy zshenv for env variables
-  copy:
-    dest: /home/{{ local_username }}
-    src: .zshenv
-    mode: 0644
-    owner: "{{ local_username }}"
-    group: "{{ local_username }}"
-
 - name: copy electron config
   copy:
     dest: /home/{{ local_username }}/.config
@@ -81,27 +99,9 @@
     group: "{{ local_username }}"
 
 - name: copy wob config and override systemd unit
-  block:
-    - file:
-        path: /home/{{ local_username }}/.config/systemd/user/wob.service.d
-        state: directory
-        mode: 0755
-    - template:
-        dest: /home/{{ local_username}}/.config/systemd/user/wob.service.d/override.conf
-        src: override.conf.j2
-        mode: 0644
-        group: "{{ local_username }}"
-        owner: "{{ local_username }}"
-    - template:
-        dest: /home/{{ local_username }}/.config/wob.ini
-        src: wob.ini.j2
-        mode: 0644
-        owner: "{{ local_username }}"
-        group: "{{ local_username }}"
-
-- name: enable systemd unit
-  systemd:
-    scope: user
-    enabled: true
-    name: wob.socket
-    daemon_reload: true
+  template:
+    dest: /home/{{ local_username }}/.config/wob.ini
+    src: wob.ini.j2
+    mode: 0644
+    owner: "{{ local_username }}"
+    group: "{{ local_username }}"

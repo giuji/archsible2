@@ -2,7 +2,7 @@
 
 - name: install foot
   become: yes
-  community.general.pacman:
+  community.general.xbps:
     name: foot
     state: present
 
@@ -27,15 +27,8 @@
         owner: "{{ local_username }}"
         group: "{{ local_username }}"
 
-- name: enable systemd unit
-  block:
-    - systemd:
-        scope: user
-        enabled: true
-        name: foot-server@wayland-1.socket
-        daemon_reload: true
-    - systemd:
-        scope: user
-        enabled: true
-        daemon_reload: true
-        name: foot-server@wayland-1.service
+- name: enable foot-server
+  lineinfile:
+    path: /home/{{ local_username }}/.config/sway/config
+    insertafter: '^#AUTOSTART$'
+    line: "exec killall foot && foot -s"

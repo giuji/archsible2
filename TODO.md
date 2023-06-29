@@ -1,11 +1,7 @@
-- [x] Make the playbook locale agnostic
-- [x] Make wine role work on arch
-- [x] Add vim themeing 
 - [ ] Implement acpi events and swaylock
 - [ ] Add kanshi role for multi monitor support
-- [x] switch to qt5ct for qt themes instead of gtk2 to remove xwayland
 - [ ] Create Podman role 
-- [ ] fix pipewire jack dependency conflict
 - [ ] add syncthing role
-- [x] add qutebrowser
-- [x] add zathura role 
+- [ ] make autostart prettier
+- [ ] rice redesign 
+- [ ] add tlp role

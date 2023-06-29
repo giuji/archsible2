@@ -1,3 +1,4 @@
+export LIBSEAT_BACKEND=seatd
 export MOZ_ENABLE_WAYLAND=1
 export QT_QPA_PLATFORMTHEME=qt6ct
 export GDK_BACKEND=wayland,x11
