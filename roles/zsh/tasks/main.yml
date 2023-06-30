@@ -34,4 +34,14 @@
         state: touch
         mode: 0755
         group: "{{ local_username }}"
-        owner: "{{ local_username }}"
+ 
+- name: install xdg-user-dirs
+  become: yes
+  community.general.xbps:
+    name: xdg-user-dirs
+    state: present
+
+- name: update user xdg dirs
+  shell:
+    cmd: xdg-user-dirs-update
+       owner: "{{ local_username }}"

@@ -10,18 +10,19 @@
           - jq
           - grim
           - wl-clipboard
-          - bemenu-wayland
+          - bemenu
           - slurp
           - seatd
-          - noto-fonts
+          - noto-fonts-ttf
           - noto-fonts-emoji
           - noto-fonts-cjk
-          - noto-fonts-extra
+          - noto-fonts-ttf-extra
           - qt6-wayland
           - qt5-wayland
           - brightnessctl
           - wob
           - dbus
+          - python-i3ipc
         state: present
       become: yes
     - community.general.xbps:
@@ -48,7 +49,7 @@
 - name: seatd configuration
   become: yes
   block:
-     - user:
+    - user:
         name: "{{ local_username }}"
         append: true
         groups: _seatd,video

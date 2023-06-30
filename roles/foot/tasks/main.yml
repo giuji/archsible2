@@ -6,14 +6,6 @@
     name: foot
     state: present
 
-- name: override default systemd units
-  copy:
-    dest: /home/{{ local_username }}/.config
-    src: systemd
-    mode: 0644
-    owner: "{{ local_username }}"
-    group: "{{ local_username }}"
-
 - name: template foot config
   block:
     - file:
