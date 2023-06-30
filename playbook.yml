@@ -24,13 +24,13 @@
     - { role: sway }
     - { role: nvim }
     - { role: logiops }
-    - { role: network }
+    #- { role: network }
     - { role: zsh }
     - { role: foot }
     - { role: filesystem }
     - { role: media }
     - { role: mako }
-    - { role: themes }
+    #- { role: themes }
     - { role: keepassxc }
     #- { role: apps }
     #- { role: firefox }
