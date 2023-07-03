@@ -15,8 +15,9 @@ compinit
 _comp_options+=(globdots)
 
 #Aliases
-alias sway="dbus-session-run"
+alias sway="dbus-run-session"
 alias vim="nvim"
+alias nivm="nvim"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh

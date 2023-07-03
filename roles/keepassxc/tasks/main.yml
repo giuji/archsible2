@@ -35,4 +35,4 @@
   lineinfile:
     path: /home/{{ local_username }}/.config/sway/config
     insertafter: '^#AUTOSTART$'
-    line: "exec killal keepassxc && keepassxc"
+    line: 'exec "pkill keepassxc; keepassxc"'

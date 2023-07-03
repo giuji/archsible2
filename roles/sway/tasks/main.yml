@@ -90,6 +90,13 @@
         mode: 0777
         owner: "{{ local_username }}"
         group: "{{ local_username }}"
+    - copy:
+        dest: /home/{{ local_username }}/.config/sway
+        src: inactive-windows-transparency.py
+        mode: 0644
+        owner: "{{ local_username }}"
+        group: "{{ local_username }}"
+
 
 - name: copy electron config
   copy:
