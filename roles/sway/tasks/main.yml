@@ -22,7 +22,7 @@
           - brightnessctl
           - wob
           - dbus
-          - python-i3ipc
+          - python3-i3ipc
         state: present
       become: yes
     - community.general.xbps:

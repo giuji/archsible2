@@ -33,7 +33,7 @@ xwayland {{ xwayland_state }}
 
 mouse_warping container
 
-exec /home/{{ local_username}}/.config/sway/inactive-windows-transparency.py --opacity 0.85
+exec python /home/{{ local_username}}/.config/sway/inactive-windows-transparency.py --opacity 0.85
 
 # make it pretty <3
 gaps outer 5
