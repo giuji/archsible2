@@ -2,63 +2,54 @@
 
 - name: generate hostname
   become: yes
-  hostname:
-    name: "{{ inventory_hostname }}"
-    use: systemd
+  replace:
+    path: /etc/hostname
+    regexp: '.*'
+    replace: "{{ inventory_hostname }}"
 
-- name: enable firewall
+- name: install firewall
+  become: yes
+  community.general.xbps:
+    name: ufw
+    state: present
+
+- name: enable firewall service
   become: yes
   block:
-    - community.general.pacman:
-        name: firewalld
-        state: present
-    - systemd:
-        name: firewalld
-        enabled: true
+    - file:
+        src: /etc/sv/ufw
+        path: /var/service/ufw
+        state: link
+    - community.general.runit:
+        name: ufw
         state: started
-    - shell:
-        cmd: firewall-cmd --set-default-zone=drop
 
-- name: enable some defaults
+- name: ufw configuration
   become: yes
-  firewalld:
-    zone: drop
-    state: enabled
-    permanent: true
-    immediate: true
-    service: "{{ item }}"
-  with_items:
-    - dhcpv6-client 
-    - mdns
-    - ssh
+  block:
+    - community.general.ufw:
+        state: enabled
+        logging: 'on'
+    - community.general.ufw:
+        policy: deny
+        direction: incoming
+    - community.general.ufw:
+        policy: allow
+        direction: outgoing 
+    - community.general.ufw:
+        rule: allow 
+        src: "{{ item }}"
+      loop:
+        - 127.0.0.1
+        - '::1'
   
 - name: enable soulseek
   become: yes
-  ansible.posix.firewalld:
-    zone: drop
+  community.general.ufw:
+    rule: allow
+    name: "soulseek"
+    log: true
     state: enabled
-    immediate: true
-    permanent: true
-    port: 2234-2239/tcp
+    proto: tcp
+    port: "2234:2239"
   when: inventory_hostname == "m8"
-
-- name: install network manager applet
-  become: yes
-  community.general.pacman:
-    name:
-      - network-manager-applet
-    state: present
-
-- name: systemd nm-applet unit
-  block:
-    - copy:
-        dest: /home/{{ local_username }}/.config
-        src: systemd
-        mode: 0644
-        owner: "{{ local_username }}"
-        group: "{{ local_username }}"
-    - systemd:
-        scope: user
-        enabled: true
-        daemon_reload: true
-        name: nm-applet

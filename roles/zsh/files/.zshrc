@@ -15,7 +15,7 @@ compinit
 _comp_options+=(globdots)
 
 #Aliases
-alias sway="dbus-run-session"
+alias sway="dbus-run-session sway"
 alias vim="nvim"
 alias nivm="nvim"
 
