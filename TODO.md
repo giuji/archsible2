@@ -5,3 +5,4 @@
 - [ ] make autostart prettier
 - [ ] rice redesign 
 - [ ] add tlp role
+- [ ] figure out a way to implement gtk theme download
