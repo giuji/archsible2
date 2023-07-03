@@ -1,48 +1,49 @@
 ---
-
-- name: install desired gtk theme
-  kewlfft.aur.aur:
-    name: 
-      - "{{ gtk_theme_package }}"
-      - papirus-icon-theme
+- name: install font
+  become: yes
+  community.general.xbps:
+    name: "{{ font_package }}"
     state: present
-    use: yay
-    extra_args: removemake
 
-- name: template in gtk config
-  block:
-    - file:
-        path: /home/{{ local_username }}/.config/gtk-3.0
-        state: directory
-        mode: 0755
-    - template:
-        dest: /home/{{ local_username }}/.config/gtk-3.0/settings.ini
-        src: settings.ini.j2
-        mode: 0644
-        owner: "{{ local_username }}"
-        group: "{{ local_username }}"
-    - template: 
-        dest: /home/{{ local_username }}/.gtkrc-2.0
-        src: gtkrc-2.0.j2
-        mode: 0644
-        owner: "{{ local_username }}"
-        group: "{{ local_username }}"
-
-- name: set theme through dconf
-  block:
-    - community.general.dconf:
-        key: "/org/gnome/desktop/interface/gtk-theme"
-        value: "'{{ gtk_theme_name }}'"
-    - community.general.dconf:
-        key: "/org/gnome/desktop/interface/icon-theme"
-        value: "'{{ gtk_icon_name }}'"
-    - community.general.dconf:
-        key: "/org/gnome/desktop/interface/cursor-theme"
-        value: "'Adwaita'"
+# GTK THEMING NEEDS SOME RETHINKING AS THEMES ARE NOT AVAILABLE FROM THE VOID REPOS SO I NEED TO FIGURE OUT A WAY TO DOWNLOAD THEM
+#- name: template in gtk config
+#  block:
+#    - file:
+#        path: /home/{{ local_username }}/.config/gtk-3.0
+#        state: directory
+#        mode: 0755
+#    - template:
+#        dest: /home/{{ local_username }}/.config/gtk-3.0/settings.ini
+#        src: settings.ini.j2
+#        mode: 0644
+#        owner: "{{ local_username }}"
+#        group: "{{ local_username }}"
+#    - template: 
+#        dest: /home/{{ local_username }}/.gtkrc-2.0
+#        src: gtkrc-2.0.j2
+#        mode: 0644
+#        owner: "{{ local_username }}"
+#        group: "{{ local_username }}"
+#
+#- name: set theme through dconf
+#  block:
+#    - community.general.xbps:
+#        name: dconf
+#        state: present
+#      become: yes
+#    - community.general.dconf:
+#        key: "/org/gnome/desktop/interface/gtk-theme"
+#        value: "'{{ gtk_theme_name }}'"
+#    - community.general.dconf:
+#        key: "/org/gnome/desktop/interface/icon-theme"
+#        value: "'{{ gtk_icon_name }}'"
+#    - community.general.dconf:
+#        key: "/org/gnome/desktop/interface/cursor-theme"
+#        value: "'Adwaita'"
 
 - name: install qt6ct
   become: yes
-  community.general.pacman:
+  community.general.xbps:
     name: qt6ct
     state: present
 
