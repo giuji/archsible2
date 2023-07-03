@@ -34,6 +34,7 @@
         state: touch
         mode: 0755
         group: "{{ local_username }}"
+        owner: "{{ local_username }}"
  
 - name: install xdg-user-dirs
   become: yes
@@ -44,4 +45,3 @@
 - name: update user xdg dirs
   shell:
     cmd: xdg-user-dirs-update
-       owner: "{{ local_username }}"
