@@ -1,9 +1,0 @@
-[Unit]
-Description=Start keepass
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/keepassxc
-
-[Install]
-WantedBy=graphical-session.target

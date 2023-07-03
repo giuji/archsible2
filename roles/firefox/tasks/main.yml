@@ -1,5 +1,11 @@
 ---
 
+- name: install browser
+  become: yes
+  community.general.xbps:
+    name: "{{ browser_name }}"
+    state: present 
+
 - name: check if profile is already present
   shell:
     cmd: ls /home/{{ local_username }}/.mozilla/{{ browser_name }}/ | grep '.*{{ profile_name}}'

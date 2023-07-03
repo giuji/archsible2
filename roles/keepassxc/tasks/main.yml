@@ -2,7 +2,7 @@
 
 - name: install keepassxc
   become: yes
-  community.general.pacman:
+  community.general.xbps:
     name: keepassxc
     state: present
 
@@ -31,16 +31,8 @@
           ShowTrayIcon=true
           TrayIconAppearance=colorful
 
-- name: systemd keepassxc
-  block:
-    - copy:
-        dest: /home/{{ local_username }}/.config
-        src: systemd
-        mode: 0644
-        group: "{{ local_username }}"
-        owner: "{{ local_username }}"
-    - systemd:
-        scope: user
-        enabled: true
-        daemon_reload: true
-        name: keepassxc
+- name: autostart keepass
+  lineinfile:
+    path: /home/{{ local_username }}/.config/sway/config
+    insertafter: '^#AUTOSTART$'
+    line: 'exec "pkill keepassxc; keepassxc"'

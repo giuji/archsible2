@@ -20,7 +20,10 @@ set $term footclient
 # on the original workspace that the command was run on.
 set $menu  bemenu-run -b -p "run" -i  -H 38 --fn "{{ font_name }}" --tb "#{{ background_color }}" --tf "#{{ foreground_color }}" --fb "#{{ background_color }}" --ff "#{{ foreground_color }}" --cf "#{{ background_color }}" --nb "#{{ background_color }}" --nf "#{{ alt_foreground_color }}" --hb "#{{ background_color }}" --hf "#{{ foreground_color }}" --af "#{{ alt_foreground_color }}" --ab "#{{ background_color }}"
 
-exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
+exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
+
+#AUTOSTART
 
 ### Output configuration
 output * bg #{{ alt_foreground_color }} solid_color
@@ -30,7 +33,7 @@ xwayland {{ xwayland_state }}
 
 mouse_warping container
 
-exec /usr/share/sway/scripts/inactive-windows-transparency.py --opacity 0.85
+exec python /home/{{ local_username}}/.config/sway/inactive-windows-transparency.py --opacity 0.85
 
 # make it pretty <3
 gaps outer 5

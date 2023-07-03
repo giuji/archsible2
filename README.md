@@ -1,8 +1,6 @@
 # archsible2
-automated arch linux setup through ansible  
-**intended for personal use only**  
-
-![screenshot](repo.png)
+automated void linux setup through ansible  
+**intended for local connection only**  
 
 
 files under `group_vars/` are the various colorschemes available, to choose one edit the inventory file `hosts` like this: 
@@ -12,8 +10,6 @@ your_hostname ansible_connection=local
 ``` 
 ## usage 
 **the playbook is intended for my personal use only**
-
-the playbook requires a working installation of [yay](https://github.com/Jguer/yay) and a user with sudo privileges.
 
 clone the repo  
 `git clone https://github.com/giuji/archsible2 && cd archsible2`  

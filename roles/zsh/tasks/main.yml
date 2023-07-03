@@ -2,7 +2,7 @@
 
 - name: install zsh 
   become: yes
-  community.general.pacman:
+  community.general.xbps:
     name:
       - zsh
       - zsh-syntax-highlighting
@@ -25,9 +25,23 @@
     group: "{{ local_username}}"
 
 - name: create zsh history
-  file:
-    path: /home/{{ local_username }}/.cache/zshistory
-    state: touch
-    mode: 0755
-    group: "{{ local_username }}"
-    owner: "{{ local_username }}"
+  block:
+    - file:
+        path: /home/{{ local_username }}/.cache
+        state: directory
+    - file:
+        path: /home/{{ local_username }}/.cache/zshistory
+        state: touch
+        mode: 0755
+        group: "{{ local_username }}"
+        owner: "{{ local_username }}"
+ 
+- name: install xdg-user-dirs
+  become: yes
+  community.general.xbps:
+    name: xdg-user-dirs
+    state: present
+
+- name: update user xdg dirs
+  shell:
+    cmd: xdg-user-dirs-update

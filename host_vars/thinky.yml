@@ -1,5 +1,4 @@
-font_name: "Gohu GohuFont"
-font_package: "gohu-font-otb"
+font_name: "Terminus"
+font_package: "terminus-font"
 display_settings:  "LVDS-1 resolution 1366x768 position 0,0"
 xwayland_state: "enabled"
-browser_name: icecat

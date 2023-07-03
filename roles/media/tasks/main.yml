@@ -18,42 +18,37 @@
   become: yes
   block:
     - name: intel
-      community.general.pacman:
+      community.general.xbps:
         name: 
-          - libva-intel-driver
+          - intel-video-accel
+          - vulkan-loader
+          - mesa-vulkan-intel
+          - mesa-dri
           - intel-gpu-tools
         state: present
       when: "'GenuineIntel' in ansible_processor"
     - name: amd
-      community.general.pacman:
+      community.general.xbps:
         name:
           - radeontop
-          - libva-mesa-driver
           - mesa-vdpau
+          - mesa-dri
+          - mesa-vaapi
+          - vulkan-loader
+          - amdvlk
         state: present
       when: "'AMD' in ansible_processor"
     - name: ffmpeg
-      community.general.pacman:
+      community.general.xbps:
         name:
           - ffmpeg
           - libva-utils
           - vdpauinfo
         state: present
 
-- name: install pipewire
-  become: yes
-  community.general.pacman:
-    name:
-      - pipewire-audio
-      - pipewire-pulse
-      - pipewire-jack
-      - wireplumber
-      - pamixer
-    state: present
-
 - name: install mpv
   become: yes
-  community.general.pacman:
+  community.general.xbps:
     name:
       - mpv
       - yt-dlp
@@ -76,10 +71,9 @@
         state: directory
         mode: 0755
 
-
 - name: install strawberry
   become: yes
-  community.general.pacman: 
+  community.general.xbps: 
     name: strawberry
     state: present
 
