@@ -25,18 +25,18 @@
     - { role: sway } # zsh and sway need to be executed in this order
     - { role: nvim }
     - { role: logiops }
-    #- { role: network }
+    - { role: network }
     - { role: foot }
     - { role: media }
     - { role: mako }
-    #- { role: themes }
+    - { role: themes }
     - { role: keepassxc }
     #- { role: apps }
     #- { role: firefox }
     - { role: qutebrowser }
     - { role: zathura }
-      #- { role: gaming }
-      #
+    #- { role: gaming }
+    
   tasks:
-    - include_tasks: tasks/filesystem.yml
     - include_tasks: tasks/pulse.yml
+    - include_tasks: tasks/filesystem.yml
