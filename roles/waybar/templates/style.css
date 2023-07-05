@@ -1,0 +1,71 @@
+/* I HAVE NO IDEA WHY THIS WORKS CSS IS SO GRRAAAAAAHH */
+
+* {
+    all: initial;
+    font-family: {{ font_name }};
+    font-weight: bold;
+    font-size: 20px;
+}
+window#waybar {
+    background-color: #{{ background_color }};
+}
+#workspaces {
+    border-radius: 10px;
+    padding: 0.4em 0.1em;
+    margin: 0.3em;
+    background-color: #{{ dark_background_color }};
+    color: #{{ foreground_color }};
+}
+#workspaces button {
+    color: #{{ foreground_color }};
+    padding: 0 0.4em;
+    /* font-size: 1.4em; */
+}
+#workspaces button:hover {
+    background: #7f849c;
+    border-radius: 10px;
+}
+#workspaces button.focused {
+    color: #{{ blue_color }};
+}
+#backlight, #language, #tray, #clock, #temperature, #pulseaudio, #battery {
+    padding: 0.4em 0.1em;
+    border-radius: 10px;
+    margin: 0 0.3em 0.3em 0.3em;
+    color: #{{ dark_background_color }};
+}
+#battery.discharging, #battery {
+    background-color: #{{ cyan_color }};
+}
+#battery.charging, #battery.charging.warning {
+    background-color: #{{ yellow_color }};
+}
+#language {
+    background-color: #{{ blue_color }};
+}
+#battery.discharging.warning {
+    background-color: #{{ red_color }};
+}
+#temperature {
+    background-color: #{{ magenta_color }};
+}
+#temperature.critical {
+    background-color: #{{ red_color }};
+}
+#pulseaudio {
+    background-color: #{{ green_color }};
+}
+#pulseaudio.muted {
+    background-color: #{{ yellow_color }};
+}
+#backlight {
+    background-color: #{{ foreground_color }};
+}
+#clock {
+    color: #{{ foreground_color }};
+    background-color: #{{ dark_background_color }};
+    font-weight: bolder;
+}
+#tray {
+    background-color: #{{ dark_background_color }};
+}

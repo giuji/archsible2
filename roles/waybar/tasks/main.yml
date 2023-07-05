@@ -1,0 +1,28 @@
+---
+- name: install waybar
+  become: yes
+  community.general.xbps:
+    name: Waybar
+    state: present
+
+- name: template waybar config
+  block:
+    - file: 
+        path: /home/{{ local_username }}/.config/waybar
+        state: directory
+        mode: 0755
+    - template:
+        dest: /home/{{ local_username }}/.config/waybar/{{ item }}
+        src: "{{ item }}"
+        mode: 0644
+        owner: "{{ local_username }}"
+        group: "{{ local_username }}"
+      loop:
+        - style.css
+        - config
+
+- name: enable waybar
+  lineinfile:
+    path: /home/{{ local_username }}/.config/sway/config
+    insertafter: '^#AUTOSTART$'
+    line: 'exec "pkill waybar; waybar"'
