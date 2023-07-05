@@ -2,7 +2,9 @@
 - name: install font
   become: yes
   community.general.xbps:
-    name: "{{ font_package }}"
+    name: 
+      - "{{ font_package }}"
+      - cantarell-fonts
     state: present
 
 # GTK THEMING NEEDS SOME RETHINKING AS THEMES ARE NOT AVAILABLE FROM THE VOID REPOS SO I NEED TO FIGURE OUT A WAY TO DOWNLOAD THEM
@@ -41,27 +43,27 @@
 #        key: "/org/gnome/desktop/interface/cursor-theme"
 #        value: "'Adwaita'"
 
-- name: install qt6ct
+- name: install qt5ct
   become: yes
   community.general.xbps:
-    name: qt6ct
+    name: qt5ct
     state: present
 
-- name: copy qt6ct config theme 
+- name: copy qt5ct config theme 
   block:
     - file:
-        path: /home/{{ local_username }}/.config/qt6ct/colors
+        path: /home/{{ local_username }}/.config/qt5ct/colors
         state: directory
         mode: 0755
-    - copy:
-        dest: /home/{{ local_username }}/.config/qt6ct/colors/{{ qt_theme_name }}.conf
-        src: "{{ qt_theme_name }}.conf"
+    - template:
+        dest: /home/{{ local_username }}/.config/qt5ct/colors/colortheme.conf
+        src: colortheme.conf.j2
         mode: 0644
         owner: "{{ local_username }}"
         group: "{{ local_username }}"
     - template:
-        dest: /home/{{ local_username }}/.config/qt6ct/qt6ct.conf
-        src: qt6ct.conf.j2
+        dest: /home/{{ local_username }}/.config/qt5ct/qt5ct.conf
+        src: qt5ct.conf.j2
         mode: 0644
         owner: "{{ local_username }}"
         group: "{{ local_username }}"

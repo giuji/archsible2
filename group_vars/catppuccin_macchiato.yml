@@ -1,22 +1,23 @@
 #COLORS (ANSI)
+dark_background_color: 181926 #crust
 background_color: 24273a
+light_background_color: 363a4f #surface0 #black_color
+lighter_background_color: 494d64 #alt_black_color
+darker_foreground_color: 8087a2 #overlay1 #alt_white_color
+dark_foreground_color: 939ab7 #white_color
 foreground_color: cad3f5
-black_color: 494d64
 red_color: ed8796	
 green_color: a6da95
 yellow_color: eed49f
 blue_color: 8aadf4
 magenta_color: f5bde6
 cyan_color: 8bd5ca
-white_color: b8c0e0	
-alt_black_color: 5b6078
 alt_red_color: ed8796
 alt_green_color: a6da95
 alt_yellow_color: eed49f
 alt_blue_color: 8aadf4
 alt_magenta_color: f5bde6
 alt_cyan_color: 8bd5ca
-alt_white_color: a5adcb
 
 alt_foreground_color: 6e738d
 #vim
@@ -27,5 +28,3 @@ vim_theme_background: dark
 gtk_theme_package: catppuccin-gtk-theme-macchiato
 gtk_theme_name: Catppuccin-Macchiato-Standard-Blue-Dark
 gtk_icon_name: Papirus-Dark
-#qt
-qt_theme_name: catppuccin_macchiato

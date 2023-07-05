@@ -27,22 +27,22 @@ config.bind('<Shift-m>', 'spawn mpv --ytdl-format=best {url}')
 ## Background color of the completion widget category headers.
 c.colors.completion.category.bg = '#{{ background_color }}'
 ## Bottom border color of the completion widget category headers.
-c.colors.completion.category.border.bottom = '#{{ black_color }}'
+c.colors.completion.category.border.bottom = '#{{ light_background_color }}'
 ## Top border color of the completion widget category headers.
-c.colors.completion.category.border.top = '#{{ alt_black_color }}' 
+c.colors.completion.category.border.top = '#{{ lighter_background_color }}' 
 ## Foreground color of completion widget category headers.
 c.colors.completion.category.fg = '#{{ green_color }}'
-c.colors.completion.fg = '#{{ alt_white_color }}'
+c.colors.completion.fg = '#{{ darker_foreground_color }}'
 # odd and even
 c.colors.completion.odd.bg = '#{{ background_color }}'
-c.colors.completion.even.bg = '#{{ black_color }}'
+c.colors.completion.even.bg = '#{{ light_background_color }}'
 
 ## Background color of the selected completion item.
-c.colors.completion.item.selected.bg = '#{{ alt_black_color }}'
+c.colors.completion.item.selected.bg = '#{{ lighter_background_color }}'
 ## Bottom border color of the selected completion item.
-c.colors.completion.item.selected.border.bottom = '#{{ alt_black_color }}'
+c.colors.completion.item.selected.border.bottom = '#{{ lighter_background_color }}'
 ## Top border color of the completion widget category headers.
-c.colors.completion.item.selected.border.top = '#{{ alt_black_color }}'
+c.colors.completion.item.selected.border.top = '#{{ lighter_background_color }}'
 ## Foreground color of the selected completion item.
 c.colors.completion.item.selected.fg = '#{{ foreground_color }}'
 ## Foreground color of the selected completion item.
@@ -51,9 +51,9 @@ c.colors.completion.item.selected.match.fg = '#{{ magenta_color }}'
 c.colors.completion.match.fg = '#{{ foreground_color }}'
 
 ## Color of the scrollbar in completion view
-c.colors.completion.scrollbar.bg = '#{{ alt_white_color }}'
+c.colors.completion.scrollbar.bg = '#{{ darker_foreground_color }}'
 ## Color of the scrollbar handle in completion view.
-c.colors.completion.scrollbar.fg = '#{{ alt_black_color }}'
+c.colors.completion.scrollbar.fg = '#{{ lighter_background_color }}'
 #
 
 # downloads
@@ -81,31 +81,31 @@ c.colors.hints.fg = '#{{ background_color }}'
 c.hints.border = "1px solid " + '#{{ background_color }}'
 
 ## Font color for the matched part of hints.
-c.colors.hints.match.fg = '#{{ white_color }}'
+c.colors.hints.match.fg = '#{{ dark_foreground_color }}'
 
 # keyhints
 ## Background color of the keyhint widget.
-c.colors.keyhint.bg = '#{{ black_color }}'
+c.colors.keyhint.bg = '#{{ light_background_color }}'
 
 ## Text color for the keyhint widget.
 c.colors.keyhint.fg = '#{{ foreground_color }}'
 
 ## Highlight color for keys to complete the current keychain.
-c.colors.keyhint.suffix.fg = '#{{ white_color }}'
+c.colors.keyhint.suffix.fg = '#{{ dark_foreground_color }}'
 #
 
 # messages
 ## Background color of an error message.
-c.colors.messages.error.bg = '#{{ black_color }}'
+c.colors.messages.error.bg = '#{{ light_background_color }}'
 ## Background color of an info message.
-c.colors.messages.info.bg = '#{{ black_color }}'
+c.colors.messages.info.bg = '#{{ light_background_color }}'
 ## Background color of a warning message.
-c.colors.messages.warning.bg = '#{{ black_color }}'
+c.colors.messages.warning.bg = '#{{ light_background_color }}'
 
 ## Border color of an error message.
 c.colors.messages.error.border = '#{{ red_color }}'
 ## Border color of an info message.
-c.colors.messages.info.border = '#{{ black_color }}'
+c.colors.messages.info.border = '#{{ light_background_color }}'
 ## Border color of a warning message.
 c.colors.messages.warning.border = '#{{ yellow_color }}'
 
@@ -119,16 +119,16 @@ c.colors.messages.warning.fg = '#{{ yellow_color }}'
 
 # prompts 
 ## Background color for prompts.
-c.colors.prompts.bg = '#{{ black_color }}'
+c.colors.prompts.bg = '#{{ light_background_color }}'
 
 # ## Border used around UI elements in prompts.
-c.colors.prompts.border = "1px solid " + '#{{ white_color }}'
+c.colors.prompts.border = "1px solid " + '#{{ dark_foreground_color }}'
 
 ## Foreground color for prompts.
 c.colors.prompts.fg = '#{{ foreground_color }}'
 
 ## Background color for the selected item in filename prompts.
-c.colors.prompts.selected.bg = '#{{ alt_black_color }}'
+c.colors.prompts.selected.bg = '#{{ lighter_background_color }}'
 
 ## Background color for the selected item in filename prompts.
 c.colors.prompts.selected.fg = '#{{ magenta_color }}'
@@ -138,7 +138,7 @@ c.colors.prompts.selected.fg = '#{{ magenta_color }}'
 ## Background color of the statusbar.
 c.colors.statusbar.normal.bg = '#{{ background_color }}'
 ## Background color of the statusbar in insert mode.
-c.colors.statusbar.insert.bg = '#{{ black_color }}'
+c.colors.statusbar.insert.bg = '#{{ light_background_color }}'
 ## Background color of the statusbar in command mode.
 c.colors.statusbar.command.bg = '#{{ background_color }}'
 ## Background color of the statusbar in caret mode.
@@ -198,14 +198,14 @@ c.colors.statusbar.command.private.fg = '#{{ background_color }}'
 ## Background color of the tab bar.
 c.colors.tabs.bar.bg = '#{{ background_color }}'
 ## Background color of unselected even tabs.
-c.colors.tabs.even.bg = '#{{ alt_black_color }}'
+c.colors.tabs.even.bg = '#{{ lighter_background_color }}'
 ## Background color of unselected odd tabs.
-c.colors.tabs.odd.bg = '#{{ black_color }}'
+c.colors.tabs.odd.bg = '#{{ light_background_color }}'
 
 ## Foreground color of unselected even tabs.
-c.colors.tabs.even.fg = '#{{ alt_white_color }}'
+c.colors.tabs.even.fg = '#{{ darker_foreground_color }}'
 ## Foreground color of unselected odd tabs.
-c.colors.tabs.odd.fg = '#{{ white_color }}'
+c.colors.tabs.odd.fg = '#{{ dark_foreground_color }}'
 
 ## Color for the tab indicator on errors.
 c.colors.tabs.indicator.error = '#{{ red_color }}'
@@ -232,8 +232,8 @@ c.colors.tabs.selected.odd.fg = '#{{ foreground_color }}'
 c.colors.contextmenu.menu.bg = '#{{ background_color }}'
 c.colors.contextmenu.menu.fg = '#{{ foreground_color }}'
 
-c.colors.contextmenu.disabled.bg = '#{{ black_color }}'
-c.colors.contextmenu.disabled.fg = '#{{ white_color }}'
+c.colors.contextmenu.disabled.bg = '#{{ light_background_color }}'
+c.colors.contextmenu.disabled.fg = '#{{ dark_foreground_color }}'
 
 c.colors.contextmenu.selected.bg = '#{{ background_color }}'
 c.colors.contextmenu.selected.fg = '#{{ magenta_color }}'
