@@ -3,6 +3,8 @@
 - [ ] Create Podman role 
 - [ ] add syncthing role
 - [ ] make autostart prettier
-- [ ] rice redesign 
+- [x] rice redesign 
 - [ ] add tlp role
-- [ ] figure out a way to implement gtk theme download
+- [x] figure out a way to implement gtk theme download
+- [ ] add ranger role for file management
+- [ ] add mpd role for music 
