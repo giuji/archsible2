@@ -23,6 +23,7 @@
           - wob
           - dbus
           - python3-i3ipc
+          - autotiling
         state: present
       become: yes
     - community.general.xbps:
@@ -84,27 +85,12 @@
         mode: 0644
         owner: "{{ local_username }}"
         group: "{{ local_username }}"
-    - template:
-        dest: /home/{{ local_username }}/.config/sway/status.sh
-        src: status.sh.j2
-        mode: 0777
-        owner: "{{ local_username }}"
-        group: "{{ local_username }}"
     - copy:
         dest: /home/{{ local_username }}/.config/sway
         src: inactive-windows-transparency.py
         mode: 0644
         owner: "{{ local_username }}"
         group: "{{ local_username }}"
-
-
-- name: copy electron config
-  copy:
-    dest: /home/{{ local_username }}/.config
-    src: electron-flags.conf
-    mode: 0644
-    owner: "{{ local_username }}"
-    group: "{{ local_username }}"
 
 - name: copy wob config and override systemd unit
   template:
