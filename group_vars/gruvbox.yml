@@ -19,12 +19,9 @@ alt_blue_color: 83a598
 alt_magenta_color: d3869b
 alt_cyan_color: 8ec07c
 
-alt_foreground_color: 504945
+wallpaper_color: 83a698 
+
+theme_style: dark #either dark or light
 #vim
 vim_theme_plug: "Plug 'morhetz/gruvbox'"
 vim_theme_name: gruvbox
-vim_theme_background: dark
-#gtk
-gtk_theme_package: gruvbox-dark-gtk
-gtk_theme_name: gruvbox-dark-gtk
-gtk_icon_name: Papirus-Dark

@@ -19,12 +19,9 @@ alt_blue_color: 1e66f5
 alt_magenta_color: ea76cb
 alt_cyan_color: 179299
 
-alt_foreground_color: acb0be
+wallpaper_color: 209fb5
+
+theme_style: light #either dark or light
 #vim
 vim_theme_plug: "Plug 'catppuccin/nvim', { 'as': 'catppuccin' }"
 vim_theme_name: catppuccin-latte
-vim_theme_background: light
-#gtk
-gtk_theme_package: catppuccin-gtk-theme-latte
-gtk_theme_name: Catppuccin-Latte-Standard-Blue-Light
-gtk_icon_name: Papirus-Light
