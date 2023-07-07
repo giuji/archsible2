@@ -7,6 +7,7 @@
       - pulseaudio
       - alsa-utils
       - pamixer
+      - pavucontrol
 
 - name: add user to audio group
   become: yes
