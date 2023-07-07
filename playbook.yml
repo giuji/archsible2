@@ -9,6 +9,9 @@
     - name: set username as fact
       set_fact:
         local_username: "{{ result.stdout }}"
+    - name: show username
+      debug:
+        msg: running as "{{ local_username }}"
 
 - hosts: all
   vars_prompt:
@@ -31,12 +34,13 @@
     - { role: mako }
     - { role: themes }
     - { role: keepassxc }
-    #- { role: apps }
-    #- { role: firefox }
+    - { role: apps }
+    - { role: firefox }
     - { role: qutebrowser }
+    - { role: waybar }
     - { role: zathura }
-    #- { role: gaming }
-    
+    - { role: gaming }
+
   tasks:
     - include_tasks: tasks/pulse.yml
     - include_tasks: tasks/filesystem.yml
