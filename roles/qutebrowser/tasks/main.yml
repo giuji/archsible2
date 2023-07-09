@@ -1,10 +1,17 @@
 ---
 
+- name: create xbps ignore rule
+  become: yes
+  copy:
+    dest: /etc/xbps.d/10-ignore.conf
+    content: "ignorepkg=chromium"
+
 - name: install qutebrowser
   community.general.xbps:
     name: 
       - qutebrowser
       - python3-adblock
+      - chromium-widevine
     state: present
 
 - name: template in config okk
