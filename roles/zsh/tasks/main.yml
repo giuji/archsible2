@@ -7,6 +7,8 @@
       - zsh
       - zsh-syntax-highlighting
       - zsh-autosuggestions
+      - zsh-completions 
+      - zsh-history-substring-search
     state: present
 
 - name: set zsh as default user shell
