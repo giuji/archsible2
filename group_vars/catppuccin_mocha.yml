@@ -1,0 +1,27 @@
+#COLORS (ANSI)
+dark_background_color: 11111b #crust
+background_color: 1e1e2e
+light_background_color: 313244 #surface0 #black_color
+lighter_background_color: 45475a #alt_black_color
+darker_foreground_color: 7f849c #overlay1 #alt_white_color
+dark_foreground_color: 9399b2 #white_color
+foreground_color: cdd6f4
+red_color: f38ba8	
+green_color: a6e3a1
+yellow_color: f9e2af
+blue_color: 89b4fa
+magenta_color: f5c2e7
+cyan_color: 94e2d5
+alt_red_color: f38ba8
+alt_green_color: a6e3a1
+alt_yellow_color: f9e2af
+alt_blue_color: 89b4fa
+alt_magenta_color: f5c2e7
+alt_cyan_color: 94e2d5
+
+wallpaper_color: 89b4fa
+
+theme_style: dark #either dark or light
+#vim
+vim_theme_plug: "Plug 'catppuccin/nvim', { 'as': 'catppuccin' }"
+vim_theme_name: catppuccin-mocha
