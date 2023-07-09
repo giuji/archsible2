@@ -5,14 +5,10 @@
   setup:
     gather_subset: hardware
 
-- name: register xdg dirs
-  block:
-    - shell:
-        cmd: xdg-user-dir MUSIC
-      register: XDG_MUSIC
-    - shell:
-        cmd: xdg-user-dir PICTURES
-      register: XDG_PICTURES
+- name: register xdg music dirs
+  shell:
+    cmd: xdg-user-dir MUSIC
+  register: XDG_MUSIC
 
 - name: install hwdec stuff
   become: yes
@@ -71,25 +67,25 @@
         state: directory
         mode: 0755
 
-          #- name: install strawberry
-          #  become: yes
-          #  community.general.xbps: 
-          #    name: strawberry
-          #    state: present
-          #
-          #- name: create strawberry config directory and config in
-          #  block:
-          #    - file:
-          #        path: /home/{{ local_username }}/.config/strawberry
-          #        state: directory
-          #        mode: 0755
-          #    - set_fact:
-          #        lastfm_state: "disabled"
-          #      when: lastfm_username == "none"
-          #    - template:
-          #        dest: /home/{{ local_username }}/.config/strawberry/strawberry.conf
-          #        src: strawberry.conf.j2
-          #        mode: 0644
-          #        owner: "{{ local_username }}"
-          #        group: "{{ local_username }}"
-          #  no_log: true
+- name: install strawberry
+  become: yes
+  community.general.xbps: 
+    name: strawberry
+    state: present
+
+- name: create strawberry config directory and config in
+  block:
+    - file:
+        path: /home/{{ local_username }}/.config/strawberry
+        state: directory
+        mode: 0755
+    - set_fact:
+        lastfm_state: "disabled"
+      when: lastfm_username == "none"
+    - template:
+        dest: /home/{{ local_username }}/.config/strawberry/strawberry.conf
+        src: strawberry.conf.j2
+        mode: 0644
+        owner: "{{ local_username }}"
+        group: "{{ local_username }}"
+  no_log: true

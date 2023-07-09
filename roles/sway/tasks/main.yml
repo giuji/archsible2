@@ -73,6 +73,16 @@
         name: dbus
         state: started
 
+- name: create sc folder
+  block:
+    - shell:
+        cmd: xdg-user-dir PICTURES
+      register: XDG_PICTURES
+    - file:
+        dest: "{{ XDG_PICTURES.stdout }}/sc"
+        state: directory
+        mode: 0755
+
 - name: copy config
   block:
     - file:
