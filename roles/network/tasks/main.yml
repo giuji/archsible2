@@ -2,10 +2,9 @@
 
 - name: generate hostname
   become: yes
-  replace:
-    path: /etc/hostname
-    regexp: '.*'
-    replace: "{{ inventory_hostname }}"
+  copy:
+    dest: /etc/hostname
+    content: "{{ inventory_hostname }}"
 
 - name: install firewall
   become: yes
