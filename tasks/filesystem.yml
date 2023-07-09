@@ -6,21 +6,3 @@
     name: 
       - ntfs-3g
     state: present
-
-- name: install file manager
-  become: yes
-  community.general.xbps:
-    name:
-      - thunar
-      - thunar-archive-plugin
-      - thunar-media-tags-plugin
-      - ristretto
-      - tumbler
-      - xarchiver
-      - unzip
-      - unrar
-      - gvfs
-      - gvfs-afc
-      - gvfs-mtp
-      - gvfs-smb
-    state: present

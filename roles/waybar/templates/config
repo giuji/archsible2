@@ -1,0 +1,58 @@
+{
+    "layer": "top",
+    "position": "left",
+    "modules-left": ["sway/workspaces", "sway/language"],
+    "modules-right": [ "backlight", "temperature", "pulseaudio", "tray", "clock", "battery"],
+    "sway/workspaces": {
+        "all-outputs": false,
+        "format": "0{index}",
+        "enable-bar-scroll": true
+    },
+    "sway/language": {
+        "format": "{short}",
+        "tooltip": true,
+        "tooltip-format": "{long}"
+    },
+    "temperature": {
+        "interval": 30,
+        "format": "{temperatureC}°C",
+        "rotate": 270,
+        "tooltip": false,
+        "critical-treshold": 65,
+        "format-critical": "{temperatureC}°C",
+        "hwmon-path": "{{ hwmon_path }}"
+    },
+    "backlight": {
+        "format": "{percent}%",
+        "device": "amdgpu_bl0",
+        "rotate": 270,
+        "tooltip": false,
+        "on-scroll-up": "brightnessctl set +4%",
+        "on-scroll-down": "brightnessctl set 4%-"
+    },
+    "pulseaudio": {
+        "format": "{volume}%",
+        "rotate": 270,
+        "tooltip": false,
+        "max-volume": 100,
+        "on-click": "pavucontrol",
+        "on-scroll-up": "pamixer -ui 2",
+        "on-scroll-down": "pamixer -ud 2",
+        "format-muted": "MUTE"
+    },
+    "battery": {
+        "interval": 60,
+        "states": { "warning": 25 },
+        "format": "{capacity}%",
+        "rotate": 270,
+        "tooltip": false
+    },
+    "clock": {
+        "format": "{:%H\n%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "tray": {
+        "icon-size": 22,
+        "spacing": 4
+    }
+}

@@ -1,24 +1,25 @@
 # -*- conf -*-
 font={{ font_name }}
 pad=20x20
+dpi-aware={{ dpi_aware_enable }}
 [cursor]
 color={{ background_color }} {{ foreground_color }}
 [colors]
 foreground={{ foreground_color }}
 background={{ background_color }}
-regular0={{ black_color }}
+regular0={{ light_background_color }}
 regular1={{ red_color }}
 regular2={{ green_color }}
 regular3={{ yellow_color }}
 regular4={{ blue_color }}
 regular5={{ magenta_color }}
 regular6={{ cyan_color }}
-regular7={{ white_color }}
-bright0={{ alt_black_color }}
+regular7={{ dark_foreground_color }}
+bright0={{ lighter_background_color }}
 bright1={{ alt_red_color }}
 bright2={{ alt_green_color }}
 bright3={{ alt_yellow_color }}
 bright4={{ alt_blue_color }}
 bright5={{ alt_magenta_color }}
 bright6={{ alt_cyan_color }}
-bright7={{ alt_white_color }}
+bright7={{ darker_foreground_color }}

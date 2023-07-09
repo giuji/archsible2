@@ -43,13 +43,13 @@
         - 127.0.0.1
         - '::1'
   
-- name: enable soulseek
-  become: yes
-  community.general.ufw:
-    rule: allow
-    name: "soulseek"
-    log: true
-    state: enabled
-    proto: tcp
-    port: "2234:2239"
-  when: inventory_hostname == "m8"
+          #- name: enable soulseek
+          #  become: yes
+          #  community.general.ufw:
+          #    rule: allow
+          #    name: "soulseek"
+          #    log: true
+          #    state: enabled
+          #    proto: tcp
+          #    port: "2234:2239"
+          #  when: inventory_hostname == "m8"
