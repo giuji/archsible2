@@ -6,3 +6,25 @@
     name: 
       - ntfs-3g
     state: present
+
+- name: install file manager
+  become: yes
+  community.general.xbps:
+    name:
+      - pcmanfm
+      - unzip 
+      - unrar
+      - xarchiver
+      - imv 
+      - tumbler
+      - pmount
+      - trash-cli
+    state: present
+
+- name: add user to plugdev
+  become: yes
+  user:
+    name: "{{ local_username }}"
+    append: true
+    groups: plugdev
+
