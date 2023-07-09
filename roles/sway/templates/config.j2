@@ -18,6 +18,8 @@ set $term foot
 
 set $menu  bemenu-run -W 0.5 -c -p "run" -i  -H 45 --fn "{{ font_name }}" --tb "#{{ dark_background_color }}" --tf "#{{ foreground_color }}" --fb "#{{ dark_background_color }}" --ff "#{{ foreground_color }}" --cf "#{{ dark_background_color }}" --nb "#{{ dark_background_color }}" --nf "#{{ lighter_background_color }}" --hb "#{{ dark_background_color }}" --hf "#{{ foreground_color }}" --af "#{{ lighter_background_color }}" --ab "#{{ dark_background_color }}"
 
+seat seat0 xcursor_theme Adwaita 24
+
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob -c /home/{{ local_username }}/.config/wob.ini
 
