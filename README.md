@@ -2,6 +2,7 @@
 automated void linux setup through ansible  
 **intended for local connection only**  
 
+![screenshot](repo.png)
 
 files under `group_vars/` are the various colorschemes available, to choose one edit the inventory file `hosts` like this: 
 ```
