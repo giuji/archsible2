@@ -34,7 +34,7 @@
     - { role: mako }
     - { role: themes }
     - { role: keepassxc }
-    - { role: firefox }
+    #- { role: firefox }
     - { role: qutebrowser }
     - { role: waybar }
     - { role: zathura }
